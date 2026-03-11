@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahimova PMU | Luxury Permanent Make Up</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+/* ── THEMES ── */
+:root {
+  --gold:#D4AF37; --gold2:#A8881C;
+  --glow:rgba(212,175,55,.28);
+  --bg:#0A0709; --bg2:#100C0E; --bg3:#181218;
+  --txt:#F0E8EC; --txt2:#A89098; --txt3:#5A4850;
+  --bdr:rgba(212,175,55,.14); --bdr2:rgba(212,175,55,.32);
+  --nav:rgba(10,7,9,.96);
+  --glass:rgba(255,255,255,.04);
+  --tr:.4s cubic-bezier(.23,1,.32,1);
+}
+[data-theme="light"] {
+  --bg:#FDF5F7; --bg2:#FFFFFF; --bg3:#F5ECF0;
+  --txt:#1A1215; --txt2:#5A4A50; --txt3:#9A8890;
+  --bdr:rgba(212,175,55,.2); --bdr2:rgba(212,175,55,.45);
+  --nav:rgba(253,245,247,.97); --glass:rgba(0,0,0,.025);
+  --glow:rgba(212,175,55,.18);
+}
+
+/* ── RESET ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',system-ui,sans-serif;font-weight:300;background:var(--bg);color:var(--txt);transition:background .4s,color .4s;overflow-x:hidden;line-height:1.7}
+img{max-width:100%;display:block;object-fit:cover}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+::selection{background:var(--gold);color:#000}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-thumb{background:var(--gold)}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:200;
+  height:64px;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:0 clamp(1rem,4vw,4rem);
+  background:var(--nav);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--bdr);
+  transition:background var(--tr),box-shadow var(--tr);
+}
+nav.sd{box-shadow:0 4px 30px rgba(0,0,0,.45)}
+.logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:300;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap;flex-shrink:0;color:var(--txt)}
+.logo b{color:var(--gold);font-style:italic;font-weight:400}
+
+.nlinks{display:flex;gap:1.6rem;list-style:none}
+.nlinks a{font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;color:var(--txt3);font-weight:400;transition:color .3s;position:relative;padding-bottom:3px;cursor:pointer}
+.nlinks a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:1px;background:var(--gold);transition:width .3s,left .3s}
+.nlinks a:hover{color:var(--gold)}
+.nlinks a:hover::after{width:100%;left:0}
+
+.tpill{display:flex;border:1px solid var(--bdr2);border-radius:30px;overflow:hidden;flex-shrink:0}
+.tpill button{padding:6px 13px;border:none;background:transparent;cursor:pointer;font-size:.63rem;letter-spacing:.08em;color:var(--txt3);transition:background .25s,color .25s;display:flex;align-items:center;gap:.3rem;white-space:nowrap}
+.tpill button.on{background:var(--gold);color:#000;font-weight:500}
+.tpill button:not(.on):hover{color:var(--gold)}
+
+.ncta{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;padding:8px 18px;border:1px solid var(--bdr2);color:var(--gold);transition:var(--tr);white-space:nowrap;flex-shrink:0;background:transparent;cursor:pointer}
+.ncta:hover{background:var(--gold);color:#000}
+
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px;flex-shrink:0}
+.hbg span{display:block;width:22px;height:1.5px;background:var(--txt);transition:var(--tr)}
+.hbg.on span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hbg.on span:nth-child(2){opacity:0}
+.hbg.on span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+.mdr{position:fixed;top:64px;left:0;width:100%;z-index:190;background:var(--nav);backdrop-filter:blur(20px);max-height:0;overflow:hidden;border-bottom:1px solid transparent;transition:max-height .4s,padding .4s,border-color .3s}
+.mdr.on{max-height:400px;padding:1.4rem 6%;border-color:var(--bdr)}
+.mdr a{display:block;padding:.8rem 0;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--txt2);border-bottom:1px solid var(--bdr);transition:color .3s;cursor:pointer}
+.mdr a:last-child{border:none}
+.mdr a:hover{color:var(--gold)}
+
+@media(max-width:860px){.nlinks,.ncta{display:none}.hbg{display:flex}}
+@media(max-width:500px){.tpill button{padding:5px 9px;font-size:.58rem}}
+
+/* ── SECTION TABS ── */
+.stabs{
+  position:sticky;top:64px;z-index:150;
+  background:var(--bg2);
+  border-bottom:1px solid var(--bdr);
+  display:flex;overflow-x:auto;
+  scrollbar-width:none;
+}
+.stabs::-webkit-scrollbar{display:none}
+.stab{
+  flex-shrink:0;padding:13px 20px;
+  font-size:.59rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--txt3);border:none;background:transparent;cursor:pointer;
+  border-bottom:2px solid transparent;transition:color .3s,border-color .3s;
+  white-space:nowrap;
+}
+.stab:hover{color:var(--txt2)}
+.stab.on{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── PAGE / SECTION VISIBILITY ── */
+.page{display:none}
+.page.show{display:block}
+
+/* ── SHARED ── */
+.wrap{padding:clamp(3rem,6vw,6rem) clamp(1.5rem,5vw,5.5rem)}
+.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:400;margin-bottom:.8rem}
+.eyebrow::after{content:'';width:22px;height:1px;background:var(--gold)}
+.stitle{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3vw,3rem);font-weight:300;color:var(--txt);line-height:1.2}
+.stitle em{font-style:italic;color:var(--gold)}
+.sdesc{font-size:.86rem;line-height:1.88;color:var(--txt2);max-width:540px;margin-top:.9rem;letter-spacing:.02em}
+.rule{width:38px;height:1px;background:var(--gold);margin:1.2rem 0;box-shadow:0 0 6px var(--glow)}
+.ctr{text-align:center}
+.ctr .eyebrow{justify-content:center}
+.ctr .eyebrow::after{display:none}
+.ctr .rule{margin:1.2rem auto}
+.ctr .sdesc{margin:.9rem auto 0}
+
+/* ── HOME / HERO ── */
+.hero{
+  min-height:calc(100vh - 100px);
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--bg);position:relative;overflow:hidden;
+}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 70% at 15% 60%,rgba(212,175,55,.055) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 85% 20%,rgba(212,175,55,.035) 0%,transparent 55%)}
+.hl{display:flex;flex-direction:column;justify-content:center;padding:4rem clamp(2rem,5vw,5.5rem);position:relative;z-index:2}
+.hl::after{content:'';position:absolute;right:0;top:15%;bottom:15%;width:1px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);animation:glowline 3s ease-in-out infinite alternate}
+@keyframes glowline{from{opacity:.3}to{opacity:.9;box-shadow:0 0 8px var(--glow)}}
+.htag{display:inline-flex;align-items:center;gap:.8rem;font-size:.57rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;font-weight:400}
+.htag::before,.htag::after{content:'';width:28px;height:1px;background:var(--gold)}
+.htitle{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.8rem,4.5vw,5.5rem);font-weight:300;line-height:1.07;color:var(--txt);margin-bottom:1.8rem}
+.htitle em{font-style:italic;color:var(--gold);position:relative;display:inline-block}
+.htitle em::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:linear-gradient(to right,var(--gold),transparent)}
+.hsub{font-size:.88rem;line-height:1.9;color:var(--txt2);max-width:420px;margin-bottom:2.5rem;letter-spacing:.025em}
+.hbtns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{padding:13px 30px;background:var(--gold);color:#000;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;font-weight:400;border:none;cursor:pointer;transition:var(--tr)}
+.btn-primary:hover{background:var(--gold2);box-shadow:0 6px 28px var(--glow)}
+.btn-secondary{padding:13px 30px;background:transparent;color:var(--txt2);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;font-weight:300;border:1px solid var(--bdr);cursor:pointer;transition:var(--tr)}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.hstats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--bdr)}
+.hsnum{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.2rem;font-weight:300;color:var(--gold);line-height:1;text-shadow:0 0 20px var(--glow)}
+.hslbl{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--txt3);margin-top:.3rem}
+.hr{position:relative;overflow:hidden;background:var(--bg3)}
+.hr img{width:100%;height:100%;object-fit:cover;object-position:top;filter:brightness(.88) contrast(1.06) saturate(.88)}
+.hr-ov{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to right,var(--bg) 0%,transparent 22%),linear-gradient(to top,var(--bg) 0%,transparent 18%)}
+
+/* ── MARQUEE ── */
+.mq{background:var(--gold);overflow:hidden;padding:.65rem 0}
+.mqt{display:flex;width:max-content;animation:mq 18s linear infinite}
+.mqt:hover{animation-play-state:paused}
+.mqi{font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:#000;padding:0 2.2rem;white-space:nowrap;display:flex;align-items:center;gap:2rem}
+.mqi::after{content:'✦';font-size:.45rem}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SERVICES ── */
+.svc-bg{background:var(--bg2)}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);margin-top:3rem}
+.svc-card{background:var(--bg2);padding:2.8rem 2.5rem;position:relative;overflow:hidden;transition:transform .4s}
+.svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,175,55,.07) 0%,transparent 55%);opacity:0;transition:opacity .4s}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.svc-card:hover::before{opacity:1}
+.svc-card:hover::after{transform:scaleX(1)}
+.svc-card:hover{transform:translateY(-3px)}
+.svc-n{font-family:'Cormorant Garamond',Georgia,serif;font-size:4.5rem;font-weight:300;line-height:1;margin-bottom:1.3rem;color:transparent;-webkit-text-stroke:1px var(--bdr);transition:-webkit-text-stroke-color .4s}
+.svc-card:hover .svc-n{-webkit-text-stroke-color:var(--bdr2)}
+.svc-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.45rem;font-weight:400;color:var(--txt);margin-bottom:.3rem}
+.svc-tag{font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;opacity:.8}
+.svc-d{font-size:.85rem;line-height:1.86;color:var(--txt2)}
+.svc-lnk{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);transition:gap .25s;cursor:pointer}
+.svc-lnk:hover{gap:.9rem}
+
+/* ── PROCESS ── */
+.proc-bg{background:var(--bg3)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3.5rem;position:relative}
+.proc-grid::before{content:'';position:absolute;top:25px;left:12.5%;right:12.5%;height:1px;background:var(--bdr)}
+.proc-step{text-align:center;position:relative}
+.proc-dot{width:50px;height:50px;border-radius:50%;border:1px solid var(--bdr2);display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;font-family:'Cormorant Garamond',Georgia,serif;font-size:1rem;color:var(--gold);background:var(--bg3);transition:var(--tr)}
+.proc-step:hover .proc-dot{background:var(--gold);color:#000;box-shadow:0 0 18px var(--glow)}
+.proc-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;color:var(--txt);font-weight:400;margin-bottom:.4rem}
+.proc-d{font-size:.78rem;line-height:1.78;color:var(--txt2)}
+
+/* ── GALLERY ── */
+.gal-bg{background:var(--bg)}
+.gal{columns:3;column-gap:12px;margin-top:2.5rem}
+.gi{break-inside:avoid;margin-bottom:12px;position:relative;overflow:hidden;background:var(--bg3)}
+.gi img{width:100%;display:block;filter:brightness(.88) saturate(.85);transition:transform .6s cubic-bezier(.16,1,.3,1),filter .5s}
+.gi:hover img{transform:scale(1.07);filter:brightness(.96) saturate(1)}
+.gi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,7,9,.8) 0%,transparent 55%);opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:1.2rem}
+.gi:hover .gi-ov{opacity:1}
+.gi-lbl{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+.gph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;border:1px dashed var(--bdr)}
+.gph-i{font-size:1.4rem;opacity:.25}
+.gph-t{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--txt3)}
+
+/* ── BEFORE AFTER ── */
+.ba-bg{background:var(--bg2)}
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:2.5rem}
+.ba-pair{display:flex;position:relative;overflow:hidden;margin-bottom:.9rem}
+.ba-side{flex:1;overflow:hidden}
+.ba-side img,.ba-side .gph{width:100%;height:210px}
+.bat{position:absolute;bottom:.7rem;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;padding:3px 8px;z-index:2}
+.bat.b{left:.7rem;background:var(--txt);color:var(--bg)}
+.bat.a{right:.7rem;background:var(--gold);color:#000}
+.ba-t{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;font-weight:400;color:var(--txt)}
+.ba-s{font-size:.64rem;color:var(--txt3);letter-spacing:.08em;margin-top:.2rem}
+
+/* ── AWARDS ── */
+.aw-bg{background:var(--bg3);position:relative;overflow:hidden}
+.aw-bg::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 60% at 50% 50%,rgba(212,175,55,.07) 0%,transparent 70%)}
+.aw-inner{position:relative}
+.aw-lay{display:grid;grid-template-columns:1.1fr 1fr;gap:4.5rem;align-items:start;margin-top:3rem}
+.aw-badges{display:flex;flex-direction:column;gap:1.1rem}
+.aw-badge{display:flex;align-items:center;gap:1.3rem;padding:1.3rem 1.5rem;border:1px solid var(--bdr);background:var(--glass);transition:border-color .3s,transform .3s;position:relative;overflow:hidden}
+.aw-badge::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.aw-badge:hover::before{transform:scaleY(1)}
+.aw-badge:hover{border-color:var(--bdr2);transform:translateX(3px)}
+.aw-ico{width:44px;height:44px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.aw-bt{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;color:var(--txt);font-weight:400}
+.aw-bs{font-size:.57rem;letter-spacing:.14em;text-transform:uppercase;color:var(--txt3);margin-top:.2rem}
+.aw-qt{margin-top:.5rem;padding:1.8rem 1.8rem 1.8rem 1.5rem;border-left:2px solid var(--gold);background:var(--glass)}
+.aw-q{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.12rem;font-style:italic;font-weight:300;color:var(--txt2);line-height:1.65;margin-bottom:.8rem}
+.aw-qa{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.aw-right{display:flex;flex-direction:column;gap:2.5rem}
+.fl-ttl{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--txt3);margin-bottom:1.1rem}
+.flags{display:flex;gap:1rem;flex-wrap:wrap}
+.flag-it{display:flex;flex-direction:column;align-items:center;gap:.4rem}
+.flag-c{width:52px;height:52px;border-radius:50%;font-size:1.7rem;border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;background:var(--glass);transition:var(--tr)}
+.flag-c:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 6px 18px var(--glow)}
+.flag-nm{font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3)}
+.certs{display:flex;flex-direction:column;gap:.9rem}
+.cert{display:flex;gap:.9rem;align-items:center}
+.cert-bar{width:2px;height:32px;flex-shrink:0;background:linear-gradient(to bottom,var(--gold),transparent)}
+.cert-t{font-size:.82rem;color:var(--txt2)}
+.cert-s{font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3)}
+
+/* ── ABOUT ── */
+.ab-bg{background:var(--bg2)}
+.ab-lay{display:grid;grid-template-columns:1fr 1.2fr;gap:5.5rem;align-items:center}
+.ab-img-w{position:relative;padding-bottom:1.5rem}
+.ab-img{width:100%;aspect-ratio:.76;object-fit:cover;object-position:top;filter:contrast(1.04) brightness(.9) saturate(.88)}
+.ab-fr{position:absolute;bottom:-14px;right:-16px;width:72%;height:68%;border:1px solid var(--gold);z-index:-1}
+.ab-badge{position:absolute;top:2rem;right:-1.8rem;width:86px;height:86px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(212,175,55,.08),0 8px 28px var(--glow);animation:bdgpulse 3s ease-in-out infinite}
+@keyframes bdgpulse{0%,100%{box-shadow:0 0 0 8px rgba(212,175,55,.08),0 8px 28px var(--glow)}50%{box-shadow:0 0 0 14px rgba(212,175,55,.04),0 8px 28px var(--glow)}}
+.ab-bn{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;font-weight:300;color:#000;line-height:1}
+.ab-bl{font-size:.42rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,0,0,.65);text-align:center}
+.ab-quote{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-style:italic;font-weight:300;color:var(--gold);line-height:1.5;margin-bottom:1.2rem}
+.ab-p{font-size:.86rem;line-height:1.88;color:var(--txt2);margin-bottom:.8rem}
+.ab-sig{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.9rem;font-style:italic;margin-top:1rem;background:linear-gradient(to right,var(--txt3),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ab-skills{display:flex;gap:2rem;margin-top:1.5rem}
+.sk{text-align:center}
+.sk-nm{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--txt3)}
+.sk-bar{width:48px;height:1px;background:var(--bdr);margin:.5rem auto 0;position:relative;overflow:hidden}
+.sk-fill{position:absolute;top:0;left:0;height:100%;background:linear-gradient(to right,var(--gold),var(--gold2));width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
+
+/* ── CONTACT ── */
+.ct-bg{background:var(--bg3)}
+.ct-lay{display:grid;grid-template-columns:1fr 1.3fr;gap:5.5rem;align-items:start}
+.ct-info{display:flex;flex-direction:column;gap:1.7rem;margin-top:2rem}
+.ct-it{display:flex;align-items:flex-start;gap:1.1rem}
+.ct-ico{width:40px;height:40px;border:1px solid var(--bdr);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--gold);transition:var(--tr)}
+.ct-it:hover .ct-ico{background:var(--gold);border-color:var(--gold);color:#000}
+.ct-lbl{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--txt3);margin-bottom:.2rem}
+.ct-val{font-size:.88rem;color:var(--txt);font-weight:300}
+.fform{display:flex;flex-direction:column;gap:1rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{display:flex;flex-direction:column;gap:.38rem}
+.fl{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--txt3)}
+.fi,.fs,.fta{background:var(--glass);border:1px solid var(--bdr);padding:12px 14px;color:var(--txt);font-family:'Jost',sans-serif;font-size:.85rem;font-weight:300;transition:border-color .3s;outline:none;width:100%}
+.fi:focus,.fs:focus,.fta:focus{border-color:var(--gold)}
+.fi::placeholder,.fta::placeholder{color:var(--txt3)}
+.fs{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23D4AF37' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:36px}
+.fs option{background:var(--bg2);color:var(--txt)}
+.fta{resize:none;min-height:90px}
+.fbtn{padding:14px;background:var(--gold);border:none;color:#000;font-family:'Jost',sans-serif;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:var(--tr)}
+.fbtn:hover{background:var(--gold2);box-shadow:0 6px 26px var(--glow)}
+.fbtn span{position:relative;z-index:1}
+.fnote{font-size:.6rem;color:var(--txt3);line-height:1.6}
+#fok{display:none;padding:1.2rem;border:1px solid var(--bdr2);background:rgba(212,175,55,.06);text-align:center;font-size:.78rem;color:var(--gold);letter-spacing:.05em}
+
+/* ── FOOTER ── */
+.footer{background:var(--bg);border-top:1px solid var(--bdr);padding:clamp(2.5rem,4vw,4.5rem) clamp(1.5rem,5vw,5.5rem) 1.8rem}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--bdr);margin-bottom:1.8rem}
+.ft-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.4rem;font-weight:300;color:var(--txt);margin-bottom:.7rem}
+.ft-logo span{color:var(--gold);font-style:italic}
+.ft-desc{font-size:.72rem;line-height:1.8;color:var(--txt3);max-width:240px}
+.ft-soc{display:flex;gap:.7rem;margin-top:1.2rem}
+.fts{width:32px;height:32px;border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;color:var(--txt3);font-size:.78rem;transition:var(--tr);text-decoration:none}
+.fts:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.ft-ct{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;opacity:.8}
+.ft-ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.ft-ul a{font-size:.72rem;color:var(--txt3);transition:color .3s;cursor:pointer}
+.ft-ul a:hover{color:var(--gold)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.ft-cp{font-size:.6rem;color:var(--txt3);opacity:.5}
+.ft-tg{font-family:'Cormorant Garamond',Georgia,serif;font-size:.82rem;font-style:italic;color:var(--txt3);opacity:.5}
+
+/* ── FLOAT ── */
+.flt{position:fixed;bottom:1.8rem;right:1.8rem;z-index:180;display:flex;flex-direction:column;gap:.7rem}
+.fltbtn{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;border:none;cursor:pointer;transition:var(--tr)}
+.flt-wa{background:#25D366;color:#fff;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.22)}
+.flt-wa:hover{transform:scale(1.1)}
+.flt-top{background:var(--gold);color:#000;opacity:0;pointer-events:none}
+.flt-top.on{opacity:1;pointer-events:auto}
+.flt-top:hover{transform:translateY(-3px)}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  /* Section tabs */
+  .stab{padding:10px 13px;font-size:.54rem;letter-spacing:.14em}
+
+  /* Hero */
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hl{padding:2rem 5% 2rem;order:2}
+  .hl::after{display:none}
+  .htag{font-size:.5rem;margin-bottom:1.2rem}
+  .htitle{font-size:clamp(2rem,7.5vw,2.8rem);margin-bottom:1.2rem}
+  .hsub{font-size:.8rem;margin-bottom:1.6rem;max-width:100%}
+  .hbtns{gap:.7rem}
+  .btn-primary,.btn-secondary{padding:11px 20px;font-size:.63rem}
+  .hstats{gap:1.8rem;margin-top:2rem;padding-top:1.8rem}
+  .hsnum{font-size:1.9rem}
+  .hr{height:52vw;min-height:200px;order:1}
+  .hr-ov{background:linear-gradient(to bottom,var(--bg) 0%,transparent 35%)}
+
+  /* Wrap padding */
+  .wrap{padding:2.5rem 5%}
+
+  /* Services */
+  .svc-grid{grid-template-columns:1fr}
+  .svc-card{padding:1.8rem 1.6rem}
+  .svc-n{font-size:3.5rem;margin-bottom:1rem}
+
+  /* Process */
+  .proc-grid{grid-template-columns:repeat(2,1fr)}
+  .proc-grid::before{display:none}
+
+  /* Gallery */
+  .gal{columns:2;column-gap:8px;margin-top:2rem}
+  .gi{margin-bottom:8px}
+
+  /* Before after */
+  .ba-grid{grid-template-columns:1fr}
+  .ba-side img,.ba-side .gph{height:150px}
+
+  /* Awards */
+  .aw-lay{grid-template-columns:1fr;gap:2rem}
+
+  /* About */
+  .ab-lay{grid-template-columns:1fr;gap:2.5rem}
+  .ab-fr{display:none}
+  .ab-badge{right:1rem;top:1rem;width:70px;height:70px}
+  .ab-bn{font-size:1.4rem}
+  .ab-img{aspect-ratio:4/3}
+
+  /* Contact */
+  .ct-lay{grid-template-columns:1fr;gap:2.5rem}
+  .frow{grid-template-columns:1fr}
+
+  /* Footer */
+  .ft-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .ft-bot{flex-direction:column;text-align:center}
+}
+@media(max-width:420px){
+  .ft-grid{grid-template-columns:1fr}
+  .gal{columns:1}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="logo">Rahimova <b>PMU</b></div>
+  <ul class="nlinks">
+    <li><a onclick="go('home')">Home</a></li>
+    <li><a onclick="go('servizi')">Servizi</a></li>
+    <li><a onclick="go('portfolio')">Portfolio</a></li>
+    <li><a onclick="go('awards')">Awards</a></li>
+    <li><a onclick="go('studio')">Studio</a></li>
+    <li><a onclick="go('contatti')">Contatti</a></li>
+  </ul>
+  <div class="tpill">
+    <button id="btnL" onclick="setTheme('light')">☀️ Chiara</button>
+    <button id="btnD" class="on" onclick="setTheme('dark')">🌙 Scura</button>
+  </div>
+  <button class="ncta" onclick="go('contatti')">Prenota</button>
+  <button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mdr" id="mdr">
+  <a onclick="go('home');closeMob()">Home</a>
+  <a onclick="go('servizi');closeMob()">Servizi</a>
+  <a onclick="go('metodo');closeMob()">Il Metodo</a>
+  <a onclick="go('portfolio');closeMob()">Portfolio</a>
+  <a onclick="go('ba');closeMob()">Prima &amp; Dopo</a>
+  <a onclick="go('awards');closeMob()">Awards</a>
+  <a onclick="go('studio');closeMob()">Studio</a>
+  <a onclick="go('contatti');closeMob()">Prenota</a>
+</div>
+
+<!-- SECTION TABS -->
+<div class="stabs" id="stabs">
+  <button class="stab on"  data-p="home"      onclick="go('home')">Home</button>
+  <button class="stab"     data-p="servizi"   onclick="go('servizi')">Servizi</button>
+  <button class="stab"     data-p="metodo"    onclick="go('metodo')">Il Metodo</button>
+  <button class="stab"     data-p="portfolio" onclick="go('portfolio')">Portfolio</button>
+  <button class="stab"     data-p="ba"        onclick="go('ba')">Prima &amp; Dopo</button>
+  <button class="stab"     data-p="awards"    onclick="go('awards')">Awards</button>
+  <button class="stab"     data-p="studio"    onclick="go('studio')">Studio</button>
+  <button class="stab"     data-p="contatti"  onclick="go('contatti')">Contatti</button>
+</div>
+
+<!-- ═══ HOME ═══ -->
+<div class="page show" id="p-home">
+  <div class="hero">
+    <div class="hl">
+      <div class="htag">Luxury · PMU · Torino</div>
+      <h1 class="htitle">L'arte della<br><em>bellezza</em><br>permanente</h1>
+      <p class="hsub">Ogni tratto è una firma. Ogni sfumatura, una storia. Nel nostro atelier, la bellezza è la tua identità.</p>
+      <div class="hbtns">
+        <button class="btn-primary" onclick="go('contatti')">Richiedi Consulenza</button>
+        <button class="btn-secondary" onclick="go('portfolio')">Scopri i Lavori</button>
+      </div>
+      <div class="hstats">
+        <div><div class="hsnum" id="st1">500+</div><div class="hslbl">Clienti Felici</div></div>
+        <div><div class="hsnum" id="st2">8+</div><div class="hslbl">Anni d'Arte</div></div>
+        <div><div class="hsnum" id="st3">4</div><div class="hslbl">Paesi Premiati</div></div>
+      </div>
+    </div>
+    <div class="hr">
+      <img src="/mnt/user-data/uploads/Schermata_2026-03-11_alle_09_52_27.png" alt="Rahimova PMU" onerror="this.style.display='none'">
+      <div class="hr-ov"></div>
+    </div>
+  </div>
+  <div class="mq" aria-hidden="true">
+    <div class="mqt">
+      <div class="mqi">Extension Ciglia</div><div class="mqi">Brows Permanente</div>
+      <div class="mqi">Labbra PMU</div><div class="mqi">Laminazione Cheratina</div>
+      <div class="mqi">Vincitrice Internazionale</div>
+      <div class="mqi">Extension Ciglia</div><div class="mqi">Brows Permanente</div>
+      <div class="mqi">Labbra PMU</div><div class="mqi">Laminazione Cheratina</div>
+      <div class="mqi">Vincitrice Internazionale</div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo">Rahimova <span>PMU</span></div>
+        <div class="ft-desc">Studio d'eccellenza per il trucco permanente e l'arte delle ciglia. Bellezza su misura, per sempre.</div>
+        <div class="ft-soc">
+          <a href="#" class="fts">📷</a><a href="#" class="fts">▶</a><a href="#" class="fts">💬</a><a href="#" class="fts">f</a>
+        </div>
+      </div>
+      <div><div class="ft-ct">Trattamenti</div><ul class="ft-ul"><li><a onclick="go('servizi')">Extension Ciglia</a></li><li><a onclick="go('servizi')">Brows PMU</a></li><li><a onclick="go('servizi')">Labbra PMU</a></li><li><a onclick="go('servizi')">Laminazione</a></li></ul></div>
+      <div><div class="ft-ct">Studio</div><ul class="ft-ul"><li><a onclick="go('studio')">Chi siamo</a></li><li><a onclick="go('awards')">Awards</a></li><li><a onclick="go('portfolio')">Portfolio</a></li><li><a onclick="go('metodo')">Il Metodo</a></li></ul></div>
+      <div><div class="ft-ct">Contatti</div><ul class="ft-ul"><li><a onclick="go('contatti')">Prenota</a></li><li><a href="tel:+39333000000">+39 333 000 0000</a></li><li><a href="mailto:info@rahimovapmu.it">info@rahimovapmu.it</a></li><li><a href="#">Privacy</a></li></ul></div>
+    </div>
+    <div class="ft-bot">
+      <div class="ft-cp">© 2026 Rahimova Permanent Make Up. Tutti i diritti riservati.</div>
+      <div class="ft-tg">"La bellezza è un'arte. Noi siamo artisti."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SERVIZI ═══ -->
+<div class="page" id="p-servizi">
+  <div class="svc-bg wrap">
+    <div class="eyebrow">I Nostri Trattamenti</div>
+    <h2 class="stitle">Arte applicata alla <em>tua bellezza</em></h2>
+    <div class="rule"></div>
+    <p class="sdesc">Ogni trattamento è un'opera su misura. Studiamo la morfologia del viso per un risultato armonioso e duraturo.</p>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-n">01</div><div class="svc-t">Extension Ciglia</div>
+        <div class="svc-tag">Volume · Densità · Curvatura</div>
+        <p class="svc-d">Architetture dello sguardo su misura. Progettiamo set personalizzati per densità e curvatura, utilizzando fibre anallergiche di seta per un effetto seta-vello che incanta ad ogni battito di ciglia.</p>
+        <a class="svc-lnk" onclick="go('contatti')">Prenota →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-n">02</div><div class="svc-t">Brows Trucco Permanente</div>
+        <div class="svc-tag">Microblading · Shading · Ombre</div>
+        <p class="svc-d">L'arte del realismo. Attraverso lo studio della morfologia del viso, ricreiamo l'arcata sopraccigliare con tecniche di sfumatura e pixel per un risultato armonioso che incornicia lo sguardo.</p>
+        <a class="svc-lnk" onclick="go('contatti')">Prenota →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-n">03</div><div class="svc-t">Labbra Trucco Permanente</div>
+        <div class="svc-tag">Acquarello · Contour · Gloss Effect</div>
+        <p class="svc-d">Ridefinizione e turgore cromatico. Un velo di colore che corregge le asimmetrie e restituisce vitalità alle labbra, donando un effetto gloss naturale che persiste giorno e notte.</p>
+        <a class="svc-lnk" onclick="go('contatti')">Prenota →</a>
+      </div>
+      <div class="svc-card">
+        <div class="svc-n">04</div><div class="svc-t">Laminazione Ciglia</div>
+        <div class="svc-tag">Cheratina · Lifting · Natural Look</div>
+        <p class="svc-d">Il lusso della semplicità. Trattamento curativo alla cheratina che solleva e ispessisce le ciglia naturali. Effetto naturale e luminoso. Zero tatuaggio, massimo risultato.</p>
+        <a class="svc-lnk" onclick="go('contatti')">Prenota →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ METODO ═══ -->
+<div class="page" id="p-metodo">
+  <div class="proc-bg wrap ctr">
+    <div class="eyebrow" style="justify-content:center">Il Percorso</div>
+    <h2 class="stitle">Come lavoriamo <em>per te</em></h2>
+    <div class="rule" style="margin:1.2rem auto"></div>
+    <div class="proc-grid">
+      <div class="proc-step"><div class="proc-dot">01</div><div class="proc-t">Consulenza Gratuita</div><p class="proc-d">Ascoltiamo le aspettative e analizziamo la morfologia del viso per progettare il trattamento ideale.</p></div>
+      <div class="proc-step"><div class="proc-dot">02</div><div class="proc-t">Progettazione</div><p class="proc-d">Disegniamo il design e la palette cromatica perfetta per il tuo incarnato e le tue caratteristiche.</p></div>
+      <div class="proc-step"><div class="proc-dot">03</div><div class="proc-t">Trattamento</div><p class="proc-d">Eseguiamo il trattamento con le migliori tecniche internazionali in ambiente sterilizzato.</p></div>
+      <div class="proc-step"><div class="proc-dot">04</div><div class="proc-t">Follow-up</div><p class="proc-d">Ti accompagniamo con cura post-trattamento e ritocco di perfezionamento incluso nel prezzo.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PORTFOLIO ═══ -->
+<div class="page" id="p-portfolio">
+  <div class="gal-bg wrap">
+    <div class="eyebrow">Portfolio</div>
+    <h2 class="stitle">Ogni lavoro, un'opera <em>unica</em></h2>
+    <div class="rule"></div>
+    <p class="sdesc">Una selezione dei nostri lavori più significativi. Ogni immagine racconta una trasformazione.</p>
+    <div class="gal">
+      <div class="gi"><img src="/mnt/user-data/uploads/Schermata_2026-03-11_alle_09_55_01.png" alt="Brows" onerror="this.closest('.gi').innerHTML='<div class=\'gph\' style=\'aspect-ratio:1\'><div class=\'gph-i\'>◇</div><div class=\'gph-t\'>Brows PMU</div></div>'"><div class="gi-ov"><span class="gi-lbl">Brows Permanente</span></div></div>
+      <div class="gi"><img src="/mnt/user-data/uploads/Schermata_2026-03-11_alle_09_54_47.png" alt="Labbra" onerror="this.closest('.gi').innerHTML='<div class=\'gph\' style=\'aspect-ratio:1\'><div class=\'gph-i\'>◈</div><div class=\'gph-t\'>Labbra PMU</div></div>'"><div class="gi-ov"><span class="gi-lbl">Labbra Permanente</span></div></div>
+      <div class="gi gph" style="aspect-ratio:3/4"><div class="gph-i">✦</div><div class="gph-t">Extension Ciglia</div></div>
+      <div class="gi gph" style="aspect-ratio:1/1"><div class="gph-i">◇</div><div class="gph-t">Brows Ombre</div></div>
+      <div class="gi gph" style="aspect-ratio:3/5"><div class="gph-i">❋</div><div class="gph-t">Laminazione</div></div>
+      <div class="gi gph" style="aspect-ratio:4/3"><div class="gph-i">◈</div><div class="gph-t">Labbra Acquarello</div></div>
+      <div class="gi gph" style="aspect-ratio:1/1"><div class="gph-i">✦</div><div class="gph-t">Volume Ciglia</div></div>
+      <div class="gi gph" style="aspect-ratio:3/4"><div class="gph-i">◇</div><div class="gph-t">Microblading</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PRIMA & DOPO ═══ -->
+<div class="page" id="p-ba">
+  <div class="ba-bg wrap">
+    <div class="eyebrow">Trasformazioni</div>
+    <h2 class="stitle">Prima <em>&amp;</em> Dopo</h2>
+    <div class="rule"></div>
+    <p class="sdesc">Le trasformazioni parlano da sole. Ogni risultato è frutto di studio, tecnica e cura artigianale.</p>
+    <div class="ba-grid">
+      <div>
+        <div class="ba-pair"><div class="ba-side"><div class="gph" style="height:210px"><div class="gph-i">◇</div><div class="gph-t">Prima</div></div></div><div class="ba-side"><div class="gph" style="height:210px;background:var(--bg3)"><div class="gph-i">◇</div><div class="gph-t">Dopo</div></div></div><span class="bat b">Prima</span><span class="bat a">Dopo</span></div>
+        <div class="ba-t">Brows Ombre Shading</div><div class="ba-s">Trucco Permanente · 2 sessioni</div>
+      </div>
+      <div>
+        <div class="ba-pair"><div class="ba-side"><div class="gph" style="height:210px"><div class="gph-i">◈</div><div class="gph-t">Prima</div></div></div><div class="ba-side"><img src="/mnt/user-data/uploads/Schermata_2026-03-11_alle_09_54_47.png" style="height:210px;width:100%;object-fit:cover" alt="Dopo" onerror="this.style.display='none'"></div><span class="bat b">Prima</span><span class="bat a">Dopo</span></div>
+        <div class="ba-t">Labbra Gloss Effect</div><div class="ba-s">Trucco Permanente · Effetto naturale</div>
+      </div>
+      <div>
+        <div class="ba-pair"><div class="ba-side"><div class="gph" style="height:210px"><div class="gph-i">✦</div><div class="gph-t">Prima</div></div></div><div class="ba-side"><div class="gph" style="height:210px;background:var(--bg3)"><div class="gph-i">✦</div><div class="gph-t">Dopo</div></div></div><span class="bat b">Prima</span><span class="bat a">Dopo</span></div>
+        <div class="ba-t">Extension Volume</div><div class="ba-s">Extension ciglia · Set completo</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ AWARDS ═══ -->
+<div class="page" id="p-awards">
+  <div class="aw-bg wrap">
+    <div class="aw-inner">
+      <div class="eyebrow">Riconoscimenti</div>
+      <h2 class="stitle">The <em>Excellence</em></h2>
+      <div class="rule"></div>
+      <p style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--txt3)">Vincitrice Internazionale · Brow Coloring Champion</p>
+      <div class="aw-lay">
+        <div class="aw-badges">
+          <div class="aw-badge"><div class="aw-ico">🏆</div><div><div class="aw-bt">Brow Coloring Winner</div><div class="aw-bs">Campionato Internazionale PMU · 2023</div></div></div>
+          <div class="aw-badge"><div class="aw-ico">🥇</div><div><div class="aw-bt">Best Lip PMU Artist</div><div class="aw-bs">European Beauty Awards · 2022</div></div></div>
+          <div class="aw-badge"><div class="aw-ico">⭐</div><div><div class="aw-bt">Excellence in Lash Art</div><div class="aw-bs">International Lash Conference · 2024</div></div></div>
+          <div class="aw-qt"><p class="aw-q">"Un'artista dalla sensibilità rara. Il suo tratto trasforma non solo il viso, ma la percezione di sé stesse."</p><div class="aw-qa">— Giuria Internazionale PMU · Milano 2023</div></div>
+        </div>
+        <div class="aw-right">
+          <div>
+            <div class="fl-ttl">Presenza Internazionale</div>
+            <div class="flags">
+              <div class="flag-it"><div class="flag-c">🇮🇹</div><div class="flag-nm">Italia</div></div>
+              <div class="flag-it"><div class="flag-c">🇺🇸</div><div class="flag-nm">America</div></div>
+              <div class="flag-it"><div class="flag-c">🇺🇦</div><div class="flag-nm">Ucraina</div></div>
+              <div class="flag-it"><div class="flag-c">🇷🇺</div><div class="flag-nm">Russia</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="fl-ttl" style="margin-bottom:1.1rem">Certificazioni</div>
+            <div class="certs">
+              <div class="cert"><div class="cert-bar"></div><div><div class="cert-t">Master Trainer Certificata</div><div class="cert-s">Phi Academy International</div></div></div>
+              <div class="cert"><div class="cert-bar"></div><div><div class="cert-t">Advanced Color Theory</div><div class="cert-s">New York Beauty Summit</div></div></div>
+              <div class="cert"><div class="cert-bar"></div><div><div class="cert-t">Lash Artist of the Year</div><div class="cert-s">Italia Beauty Awards</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ STUDIO ═══ -->
+<div class="page" id="p-studio">
+  <div class="ab-bg wrap">
+    <div class="ab-lay">
+      <div class="ab-img-w">
+        <img class="ab-img" src="/mnt/user-data/uploads/Schermata_2026-03-11_alle_09_52_27.png" alt="Rahimova" onerror="this.style.minHeight='380px';this.style.background='var(--bg3)';this.src=''">
+        <div class="ab-fr"></div>
+        <div class="ab-badge"><div class="ab-bn">8+</div><div class="ab-bl">anni<br>d'arte</div></div>
+      </div>
+      <div>
+        <div class="eyebrow">La nostra filosofia</div>
+        <h2 class="stitle">Chi <em>siamo</em></h2>
+        <div class="rule"></div>
+        <p class="ab-quote">"La bellezza non si applica. Si rivela."</p>
+        <p class="ab-p">Rahimova PMU è uno studio di eccellenza dedicato all'arte del trucco permanente e alla cura delle ciglia. Con oltre otto anni di esperienza internazionale e riconoscimenti in quattro paesi, offriamo trattamenti su misura per ogni volto.</p>
+        <p class="ab-p">Il nostro approccio è quello dell'artista: osserviamo, ascoltiamo e poi creiamo. Ogni intervento nasce da un dialogo profondo con la cliente.</p>
+        <div class="ab-skills" id="abSkills">
+          <div class="sk"><div class="sk-nm">Precisione</div><div class="sk-bar"><div class="sk-fill" data-w="95%"></div></div></div>
+          <div class="sk"><div class="sk-nm">Naturalezza</div><div class="sk-bar"><div class="sk-fill" data-w="92%"></div></div></div>
+          <div class="sk"><div class="sk-nm">Sicurezza</div><div class="sk-bar"><div class="sk-fill" data-w="100%"></div></div></div>
+          <div class="sk"><div class="sk-nm">Creatività</div><div class="sk-bar"><div class="sk-fill" data-w="88%"></div></div></div>
+        </div>
+        <div class="ab-sig">Rahimova</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONTATTI ═══ -->
+<div class="page" id="p-contatti">
+  <div class="ct-bg wrap">
+    <div class="ct-lay">
+      <div>
+        <div class="eyebrow">Contatti</div>
+        <h2 class="stitle">Inizia il tuo <em>percorso</em></h2>
+        <div class="rule"></div>
+        <p class="sdesc">Prenota la tua consulenza gratuita. Ti risponderemo entro 24 ore.</p>
+        <div class="ct-info">
+          <div class="ct-it"><div class="ct-ico">📍</div><div><div class="ct-lbl">Studio</div><div class="ct-val">Via della Bellezza 12, Torino</div></div></div>
+          <div class="ct-it"><div class="ct-ico">📱</div><div><div class="ct-lbl">Telefono &amp; WhatsApp</div><div class="ct-val">+39 333 000 0000</div></div></div>
+          <div class="ct-it"><div class="ct-ico">✉️</div><div><div class="ct-lbl">Email</div><div class="ct-val">info@rahimovapmu.it</div></div></div>
+          <div class="ct-it"><div class="ct-ico">🕐</div><div><div class="ct-lbl">Orari</div><div class="ct-val">Lun–Sab · 10:00 – 19:00</div></div></div>
+        </div>
+      </div>
+      <div>
+        <form class="fform" id="ctForm">
+          <div class="frow">
+            <div class="fg"><label class="fl">Nome *</label><input type="text" class="fi" name="nome" placeholder="Il tuo nome" required></div>
+            <div class="fg"><label class="fl">Telefono *</label><input type="tel" class="fi" name="tel" placeholder="+39 333 000 0000" required></div>
+          </div>
+          <div class="fg"><label class="fl">Email *</label><input type="email" class="fi" name="email" placeholder="la.tua@email.it" required></div>
+          <div class="fg">
+            <label class="fl">Servizio</label>
+            <select class="fs" name="servizio">
+              <option value="">Seleziona un trattamento</option>
+              <option>Brows Trucco Permanente</option>
+              <option>Labbra Trucco Permanente</option>
+              <option>Extension Ciglia</option>
+              <option>Laminazione Ciglia</option>
+              <option>Consulenza Generica</option>
+            </select>
+          </div>
+          <div class="fg"><label class="fl">Messaggio</label><textarea class="fta" name="msg" placeholder="Raccontaci le tue aspettative…"></textarea></div>
+          <button type="submit" class="fbtn"><span>Richiedi Consulenza Gratuita →</span></button>
+          <div id="fok">✦ Grazie! Ti contatteremo entro 24 ore per confermare.</div>
+          <p class="fnote">* I tuoi dati sono trattati nel rispetto del GDPR e non condivisi con terze parti.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOAT -->
+<div class="flt">
+  <a href="https://wa.me/39333000000" class="fltbtn flt-wa" aria-label="WhatsApp">💬</a>
+  <button class="fltbtn flt-top" id="bkTop" aria-label="Su">↑</button>
+</div>
+
+<script>
+/* ── NAVIGATION ───────────────────────────── */
+function go(id) {
+  // hide all pages
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('show'); });
+  // show target
+  var p = document.getElementById('p-' + id);
+  if (p) p.classList.add('show');
+  // update tabs
+  document.querySelectorAll('.stab').forEach(function(t){
+    t.classList.toggle('on', t.getAttribute('data-p') === id);
+  });
+  // scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // studio skill bars
+  if (id === 'studio') setTimeout(animSkills, 150);
+}
+
+/* ── THEME ────────────────────────────────── */
+function setTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  document.getElementById('btnL').classList.toggle('on', t === 'light');
+  document.getElementById('btnD').classList.toggle('on', t === 'dark');
+  try { localStorage.setItem('pmu-t', t); } catch(e) {}
+}
+try { var st = localStorage.getItem('pmu-t'); if (st) setTheme(st); } catch(e) {}
+
+/* ── HAMBURGER ────────────────────────────── */
+var hbg = document.getElementById('hbg');
+var mdr = document.getElementById('mdr');
+hbg.addEventListener('click', function() {
+  hbg.classList.toggle('on');
+  mdr.classList.toggle('on');
+});
+function closeMob() {
+  hbg.classList.remove('on');
+  mdr.classList.remove('on');
+}
+
+/* ── SCROLL ───────────────────────────────── */
+var bkTop = document.getElementById('bkTop');
+window.addEventListener('scroll', function() {
+  document.getElementById('mainNav').classList.toggle('sd', window.scrollY > 20);
+  bkTop.classList.toggle('on', window.scrollY > 400);
+});
+bkTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+/* ── SKILL BARS ───────────────────────────── */
+function animSkills() {
+  var el = document.getElementById('abSkills');
+  if (!el) return;
+  el.querySelectorAll('.sk-fill').forEach(function(b) {
+    b.style.width = '0';
+    var w = b.getAttribute('data-w');
+    setTimeout(function() { b.style.width = w; }, 100);
+  });
+}
+
+/* ── FORM ─────────────────────────────────── */
+document.getElementById('ctForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var btn = this.querySelector('.fbtn');
+  var sp  = btn.querySelector('span');
+  var ok  = document.getElementById('fok');
+  sp.textContent = 'Invio in corso…';
+  btn.disabled = true;
+  var d = { timestamp: new Date().toISOString() };
+  new FormData(this).forEach(function(v, k) { d[k] = v; });
+  try {
+    await fetch('YOUR_GOOGLE_SCRIPT_URL', { method: 'POST', mode: 'no-cors', body: JSON.stringify(d) });
+  } catch(_) {}
+  ok.style.display = 'block';
+  this.reset();
+  sp.textContent = 'Richiedi Consulenza Gratuita →';
+  btn.disabled = false;
+  setTimeout(function() { ok.style.display = 'none'; }, 6000);
+});
+</script>
+</body>
+</html>
