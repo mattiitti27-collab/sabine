@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahimova Permanent Make Up | Luxury PMU Studio</title>
+<style>
+/* Self-contained AOS animation base styles */
+[data-aos] {
+  pointer-events: none;
+  transition-property: opacity, transform;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  transition-duration: 800ms;
+}
+[data-aos].aos-animate { pointer-events: auto; }
+[data-aos="fade-up"] { opacity: 0; transform: translateY(32px); }
+[data-aos="fade-up"].aos-animate { opacity: 1; transform: translateY(0); }
+[data-aos="fade-right"] { opacity: 0; transform: translateX(-32px); }
+[data-aos="fade-right"].aos-animate { opacity: 1; transform: translateX(0); }
+[data-aos="fade-left"] { opacity: 0; transform: translateX(32px); }
+[data-aos="fade-left"].aos-animate { opacity: 1; transform: translateX(0); }
+[data-aos="fade-in"] { opacity: 0; }
+[data-aos="fade-in"].aos-animate { opacity: 1; }
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap');
+
+/* ═══════════════════════════════════════════
+   ROOT VARIABLES & THEMES
+═══════════════════════════════════════════ */
+:root {
+  --blush: #FDF5F7;
+  --blush-mid: #F5E6EA;
+  --gold: #D4AF37;
+  --gold-light: #E8D07A;
+  --gold-dark: #A8881C;
+  --white: #FFFFFF;
+  --anthracite: #2B2B2B;
+  --anthracite-light: #3D3D3D;
+  --text-main: #2B2B2B;
+  --text-muted: #8A7A7E;
+  --text-light: #B8A8AC;
+  --bg: #FDF5F7;
+  --bg-alt: #FFFFFF;
+  --bg-card: rgba(255,255,255,0.85);
+  --border: rgba(212,175,55,0.25);
+  --shadow: rgba(43,43,43,0.08);
+  --nav-bg: rgba(253,245,247,0.92);
+  --overlay: rgba(253,245,247,0.6);
+  --transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+}
+[data-theme="dark"] {
+  --blush: #1A1218;
+  --blush-mid: #221820;
+  --white: #F5EAF0;
+  --anthracite: #F0E8EC;
+  --anthracite-light: #D4C8CC;
+  --text-main: #F0E8EC;
+  --text-muted: #A89098;
+  --text-light: #6A5A60;
+  --bg: #1A1218;
+  --bg-alt: #221820;
+  --bg-card: rgba(34,24,32,0.92);
+  --border: rgba(212,175,55,0.2);
+  --shadow: rgba(0,0,0,0.35);
+  --nav-bg: rgba(26,18,24,0.95);
+  --overlay: rgba(26,18,24,0.6);
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body {
+  font-family:'Jost', sans-serif;
+  font-weight:300;
+  background:var(--bg);
+  color:var(--text-main);
+  transition: background 0.5s ease, color 0.5s ease;
+  overflow-x:hidden;
+  cursor:none;
+}
+img { max-width:100%; display:block; }
+a { text-decoration:none; color:inherit; }
+::selection { background:var(--gold); color:var(--white); }
+
+/* ═══════════════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════════════ */
+.cursor {
+  position:fixed; top:0; left:0; z-index:9999;
+  pointer-events:none; mix-blend-mode:multiply;
+}
+.cursor-dot {
+  width:8px; height:8px; background:var(--gold);
+  border-radius:50%; position:absolute;
+  transform:translate(-50%,-50%);
+  transition:opacity 0.3s;
+}
+.cursor-ring {
+  width:36px; height:36px;
+  border:1px solid var(--gold);
+  border-radius:50%; position:absolute;
+  transform:translate(-50%,-50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+  opacity:0.6;
+}
+body:hover .cursor { opacity:1; }
+@media(max-width:768px){ .cursor { display:none; } body { cursor:auto; } }
+
+/* ═══════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════ */
+::-webkit-scrollbar { width:3px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--gold); border-radius:10px; }
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+nav {
+  position:fixed; top:0; left:0; width:100%; z-index:100;
+  padding:0 5%;
+  background:var(--nav-bg);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  height:70px;
+  display:flex; align-items:center; justify-content:space-between;
+  transition: var(--transition);
+}
+.nav-logo {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.35rem; font-weight:300; letter-spacing:0.12em;
+  color:var(--text-main);
+}
+.nav-logo span { color:var(--gold); }
+.nav-links {
+  display:flex; gap:2.5rem; list-style:none;
+  align-items:center;
+}
+.nav-links a {
+  font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--text-muted); font-weight:400;
+  transition:color 0.3s;
+  position:relative;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-3px; left:0;
+  width:0; height:1px; background:var(--gold);
+  transition:width 0.3s;
+}
+.nav-links a:hover { color:var(--gold); }
+.nav-links a:hover::after { width:100%; }
+.nav-right { display:flex; align-items:center; gap:1.2rem; }
+.theme-toggle {
+  background:none; border:1px solid var(--border);
+  width:38px; height:38px; border-radius:50%;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  font-size:1rem; transition:var(--transition);
+  color:var(--text-main);
+}
+.theme-toggle:hover { border-color:var(--gold); color:var(--gold); transform:rotate(20deg); }
+.nav-cta {
+  font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase;
+  padding:10px 22px; border:1px solid var(--gold);
+  color:var(--gold); font-family:'Jost';
+  transition:var(--transition); font-weight:400;
+}
+.nav-cta:hover { background:var(--gold); color:var(--white); }
+.hamburger {
+  display:none; flex-direction:column; gap:5px;
+  background:none; border:none; cursor:pointer; padding:5px;
+}
+.hamburger span {
+  display:block; width:24px; height:1px;
+  background:var(--text-main); transition:var(--transition);
+}
+.hamburger.active span:nth-child(1) { transform:translateY(6px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity:0; }
+.hamburger.active span:nth-child(3) { transform:translateY(-6px) rotate(-45deg); }
+
+/* Mobile menu */
+.mobile-menu {
+  position:fixed; top:70px; left:0; width:100%; z-index:99;
+  background:var(--nav-bg); backdrop-filter:blur(20px);
+  padding:0 5%;
+  max-height:0; overflow:hidden;
+  border-bottom:1px solid transparent;
+  transition:max-height 0.5s cubic-bezier(0.23,1,0.32,1), padding 0.5s, border-color 0.3s;
+}
+.mobile-menu.active {
+  max-height:400px; padding:2rem 5%;
+  border-color:var(--border);
+}
+.mobile-menu a {
+  display:block; padding:0.9rem 0;
+  font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--text-muted); border-bottom:1px solid var(--border);
+  transition:color 0.3s;
+}
+.mobile-menu a:last-child { border:none; }
+.mobile-menu a:hover { color:var(--gold); }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+#hero {
+  min-height:100vh; position:relative;
+  display:flex; align-items:center;
+  padding:0 5%;
+  overflow:hidden;
+}
+.hero-bg {
+  position:absolute; inset:0;
+  background: linear-gradient(135deg, var(--blush) 0%, var(--blush-mid) 100%);
+}
+.hero-bg::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(212,175,55,0.08) 0%, transparent 70%);
+}
+.hero-noise {
+  position:absolute; inset:0; opacity:0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat:repeat; background-size:200px;
+  pointer-events:none;
+}
+.hero-content {
+  position:relative; z-index:2;
+  max-width:55%; padding-top:70px;
+}
+.hero-eyebrow {
+  font-size:0.68rem; letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--gold); font-weight:400; margin-bottom:1.5rem;
+  display:flex; align-items:center; gap:1rem;
+}
+.hero-eyebrow::before {
+  content:''; width:40px; height:1px; background:var(--gold); flex-shrink:0;
+}
+.hero-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(3rem, 6vw, 6rem);
+  font-weight:300; line-height:1.1;
+  color:var(--text-main); margin-bottom:1.8rem;
+}
+.hero-title em { font-style:italic; color:var(--gold); }
+.hero-subtitle {
+  font-size:0.85rem; line-height:1.9; color:var(--text-muted);
+  max-width:480px; margin-bottom:2.8rem; font-weight:300;
+  letter-spacing:0.04em;
+}
+.hero-btns { display:flex; gap:1.2rem; flex-wrap:wrap; }
+.btn-primary {
+  padding:14px 36px; background:var(--gold); color:var(--white);
+  font-size:0.7rem; letter-spacing:0.22em; text-transform:uppercase;
+  font-family:'Jost'; font-weight:400;
+  transition:var(--transition); display:inline-block;
+  position:relative; overflow:hidden;
+}
+.btn-primary::before {
+  content:''; position:absolute; inset:0;
+  background:var(--gold-dark); transform:translateX(-101%);
+  transition:transform 0.4s cubic-bezier(0.23,1,0.32,1);
+}
+.btn-primary:hover::before { transform:translateX(0); }
+.btn-primary span { position:relative; z-index:1; }
+.btn-ghost {
+  padding:14px 36px; border:1px solid var(--text-light);
+  color:var(--text-muted); font-size:0.7rem; letter-spacing:0.22em;
+  text-transform:uppercase; font-family:'Jost'; font-weight:400;
+  transition:var(--transition); display:inline-block;
+}
+.btn-ghost:hover { border-color:var(--gold); color:var(--gold); }
+.hero-image-wrap {
+  position:absolute; right:0; top:0; bottom:0;
+  width:48%; overflow:hidden;
+}
+.hero-image-wrap img {
+  width:100%; height:100%; object-fit:cover;
+  object-position:top center;
+  filter:brightness(0.92) contrast(1.05);
+}
+.hero-image-wrap::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:30%;
+  background: linear-gradient(to right, var(--bg), transparent);
+  z-index:1;
+}
+.hero-scroll {
+  position:absolute; bottom:2.5rem; left:5%;
+  display:flex; align-items:center; gap:1rem; z-index:2;
+}
+.hero-scroll span {
+  font-size:0.62rem; letter-spacing:0.3em; text-transform:uppercase;
+  color:var(--text-light);
+}
+.scroll-line {
+  width:60px; height:1px; background:var(--gold);
+  position:relative; overflow:hidden;
+}
+.scroll-line::after {
+  content:''; position:absolute; top:0; left:-100%;
+  width:100%; height:100%; background:var(--gold-dark);
+  animation:scrollLine 2s infinite;
+}
+@keyframes scrollLine {
+  to { left:100%; }
+}
+.hero-stats {
+  position:absolute; bottom:2.5rem; right:5%;
+  display:flex; gap:3rem; z-index:2;
+}
+.hero-stat { text-align:center; }
+.hero-stat-num {
+  font-family:'Cormorant Garamond', serif;
+  font-size:2rem; font-weight:300; color:var(--gold); line-height:1;
+}
+.hero-stat-label {
+  font-size:0.58rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--text-light); margin-top:0.3rem;
+}
+
+/* ═══════════════════════════════════════════
+   SECTION COMMONS
+═══════════════════════════════════════════ */
+section { padding:6rem 5%; }
+.section-header { margin-bottom:4rem; }
+.section-eyebrow {
+  font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--gold); font-weight:400; margin-bottom:1rem;
+  display:flex; align-items:center; gap:0.8rem;
+}
+.section-eyebrow::after {
+  content:''; width:30px; height:1px; background:var(--gold); flex-shrink:0;
+}
+.section-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(2rem, 4vw, 3.2rem); font-weight:300;
+  color:var(--text-main); line-height:1.2;
+}
+.section-title em { font-style:italic; color:var(--gold); }
+.section-desc {
+  font-size:0.82rem; line-height:1.9; color:var(--text-muted);
+  max-width:540px; margin-top:1.2rem; font-weight:300; letter-spacing:0.03em;
+}
+.gold-line {
+  width:50px; height:1px; background:var(--gold);
+  margin:1.8rem 0;
+}
+
+/* ═══════════════════════════════════════════
+   SERVICES
+═══════════════════════════════════════════ */
+#services { background:var(--bg-alt); }
+.services-grid {
+  display:grid; grid-template-columns:repeat(2, 1fr);
+  gap:1px; background:var(--border);
+  border:1px solid var(--border);
+}
+.service-card {
+  background:var(--bg-alt);
+  padding:3rem 2.5rem; position:relative;
+  overflow:hidden; transition:var(--transition);
+  cursor:none;
+}
+.service-card::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(135deg, rgba(212,175,55,0.05) 0%, transparent 60%);
+  opacity:0; transition:opacity 0.4s;
+}
+.service-card:hover::before { opacity:1; }
+.service-card:hover { transform:translateY(-2px); }
+.service-num {
+  font-family:'Cormorant Garamond', serif;
+  font-size:4rem; font-weight:300; color:var(--border);
+  line-height:1; margin-bottom:1.5rem;
+  transition:color 0.3s;
+}
+.service-card:hover .service-num { color:rgba(212,175,55,0.2); }
+.service-icon { font-size:1.6rem; margin-bottom:1rem; }
+.service-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.5rem; font-weight:400; color:var(--text-main);
+  margin-bottom:0.5rem; letter-spacing:0.03em;
+}
+.service-tag {
+  font-size:0.6rem; letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1.2rem;
+}
+.service-desc {
+  font-size:0.82rem; line-height:1.85; color:var(--text-muted);
+  font-weight:300; letter-spacing:0.02em;
+}
+.service-cta {
+  display:inline-flex; align-items:center; gap:0.6rem;
+  margin-top:1.8rem; font-size:0.68rem; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--gold); font-weight:400;
+  transition:gap 0.3s;
+}
+.service-cta:hover { gap:1rem; }
+.service-cta svg { width:16px; height:16px; }
+
+/* ═══════════════════════════════════════════
+   GALLERY
+═══════════════════════════════════════════ */
+#gallery { background:var(--bg); }
+.gallery-masonry {
+  columns:3; column-gap:16px;
+}
+.gallery-item {
+  break-inside:avoid; margin-bottom:16px;
+  position:relative; overflow:hidden;
+  background:var(--blush-mid);
+}
+.gallery-item img {
+  width:100%; display:block;
+  transition:transform 0.6s cubic-bezier(0.23,1,0.32,1);
+  filter:brightness(0.95);
+}
+.gallery-item:hover img { transform:scale(1.05); }
+.gallery-overlay {
+  position:absolute; inset:0;
+  background: linear-gradient(to top, rgba(26,18,24,0.7) 0%, transparent 60%);
+  opacity:0; transition:opacity 0.4s;
+  display:flex; align-items:flex-end; padding:1.5rem;
+}
+.gallery-item:hover .gallery-overlay { opacity:1; }
+.gallery-label {
+  font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:rgba(255,255,255,0.85);
+}
+/* Placeholder items */
+.gallery-placeholder {
+  background: linear-gradient(135deg, var(--blush-mid), var(--blush));
+  aspect-ratio:3/4; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:0.5rem;
+  border:1px dashed var(--border);
+}
+.gallery-placeholder-icon { font-size:1.8rem; opacity:0.4; }
+.gallery-placeholder-text {
+  font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--text-light);
+}
+
+/* ═══════════════════════════════════════════
+   BEFORE & AFTER
+═══════════════════════════════════════════ */
+#beforeafter { background:var(--bg-alt); }
+.ba-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:2rem; }
+.ba-item { position:relative; }
+.ba-images {
+  position:relative; overflow:hidden; margin-bottom:1rem;
+}
+.ba-before, .ba-after {
+  width:50%; display:inline-block; vertical-align:top;
+  overflow:hidden;
+}
+.ba-before img, .ba-after img {
+  width:100%; height:260px; object-fit:cover;
+}
+.ba-tag {
+  position:absolute; bottom:0.8rem;
+  font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase;
+  padding:4px 10px; font-weight:400;
+}
+.ba-tag.before { left:0.8rem; background:var(--anthracite); color:var(--bg); }
+.ba-tag.after { right:0.8rem; background:var(--gold); color:var(--white); }
+.ba-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.1rem; font-weight:400; color:var(--text-main);
+}
+.ba-sub { font-size:0.7rem; color:var(--text-light); letter-spacing:0.1em; }
+
+/* ═══════════════════════════════════════════
+   AWARDS
+═══════════════════════════════════════════ */
+#awards {
+  background: linear-gradient(135deg, var(--anthracite) 0%, #1A1218 100%);
+  position:relative; overflow:hidden;
+}
+[data-theme="dark"] #awards {
+  background: linear-gradient(135deg, #0D090B 0%, #1A1218 100%);
+}
+#awards::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(212,175,55,0.12) 0%, transparent 70%);
+}
+.awards-content { position:relative; z-index:1; }
+.awards-eyebrow {
+  font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--gold); font-weight:400; margin-bottom:1rem;
+  display:flex; align-items:center; gap:0.8rem;
+}
+.awards-eyebrow::after { content:''; width:30px; height:1px; background:var(--gold); }
+.awards-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(2rem, 4vw, 3.5rem); font-weight:300;
+  color:#F0E8EC; line-height:1.2; margin-bottom:0.5rem;
+}
+.awards-title em { font-style:italic; color:var(--gold); }
+.awards-subtitle {
+  font-size:0.82rem; color:rgba(240,232,236,0.5);
+  letter-spacing:0.15em; text-transform:uppercase;
+  margin-bottom:3.5rem;
+}
+.awards-layout {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:5rem; align-items:center;
+}
+.award-main {
+  display:flex; flex-direction:column; gap:2rem;
+}
+.award-badge {
+  display:flex; align-items:center; gap:1.5rem;
+  padding:1.5rem; border:1px solid rgba(212,175,55,0.2);
+  background:rgba(212,175,55,0.04);
+  transition:var(--transition);
+}
+.award-badge:hover { border-color:rgba(212,175,55,0.5); background:rgba(212,175,55,0.08); }
+.award-badge-icon {
+  width:52px; height:52px; border-radius:50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem; flex-shrink:0;
+}
+.award-badge-text { flex:1; }
+.award-badge-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.15rem; color:#F0E8EC; font-weight:400;
+}
+.award-badge-sub {
+  font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase;
+  color:rgba(240,232,236,0.4); margin-top:0.2rem;
+}
+.countries { display:flex; flex-direction:column; gap:2.5rem; }
+.countries-title {
+  font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase;
+  color:rgba(212,175,55,0.6);
+}
+.country-flags { display:flex; gap:1.2rem; flex-wrap:wrap; }
+.country-flag {
+  display:flex; flex-direction:column; align-items:center; gap:0.5rem;
+  cursor:default;
+}
+.flag-circle {
+  width:56px; height:56px; border-radius:50%;
+  border:2px solid rgba(212,175,55,0.3);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.8rem;
+  transition:var(--transition);
+  background:rgba(255,255,255,0.03);
+}
+.flag-circle:hover {
+  border-color:var(--gold);
+  transform:translateY(-3px);
+  background:rgba(212,175,55,0.1);
+}
+.flag-name {
+  font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase;
+  color:rgba(240,232,236,0.35);
+}
+.testimonial-block {
+  padding:2.5rem;
+  border-left:2px solid var(--gold);
+  background:rgba(212,175,55,0.03);
+  margin-top:2rem;
+}
+.testimonial-text {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.25rem; font-style:italic; font-weight:300;
+  color:rgba(240,232,236,0.8); line-height:1.7; margin-bottom:1.2rem;
+}
+.testimonial-author {
+  font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--gold);
+}
+
+/* ═══════════════════════════════════════════
+   PROCESS
+═══════════════════════════════════════════ */
+#process { background:var(--bg); }
+.process-steps {
+  display:grid; grid-template-columns:repeat(4, 1fr);
+  gap:0; position:relative;
+}
+.process-steps::before {
+  content:''; position:absolute;
+  top:28px; left:calc(12.5% - 1px); right:calc(12.5% - 1px);
+  height:1px; background:var(--border); z-index:0;
+}
+.process-step {
+  padding:0 1.5rem; text-align:center;
+  position:relative; z-index:1;
+}
+.step-dot {
+  width:56px; height:56px; border-radius:50%;
+  border:1px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 1.5rem;
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.2rem; color:var(--gold);
+  background:var(--bg);
+  transition:var(--transition);
+}
+.process-step:hover .step-dot {
+  background:var(--gold); color:var(--white);
+}
+.step-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.1rem; color:var(--text-main); margin-bottom:0.5rem; font-weight:400;
+}
+.step-desc {
+  font-size:0.75rem; line-height:1.75; color:var(--text-muted); font-weight:300;
+}
+
+/* ═══════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════ */
+#about { background:var(--bg-alt); }
+.about-layout {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:6rem; align-items:center;
+}
+.about-image-wrap { position:relative; }
+.about-img {
+  width:100%; object-fit:cover;
+  filter:brightness(0.95) contrast(1.03);
+}
+.about-img-frame {
+  position:absolute; bottom:-20px; right:-20px;
+  width:80%; height:80%;
+  border:1px solid var(--gold); z-index:-1;
+}
+.about-badge {
+  position:absolute; bottom:2rem; left:-2rem;
+  width:100px; height:100px; border-radius:50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  box-shadow:0 10px 40px rgba(212,175,55,0.3);
+}
+.about-badge-num {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.8rem; font-weight:300; color:var(--white); line-height:1;
+}
+.about-badge-text {
+  font-size:0.5rem; letter-spacing:0.15em; text-transform:uppercase;
+  color:rgba(255,255,255,0.8); text-align:center; margin-top:0.2rem;
+}
+.about-text { display:flex; flex-direction:column; gap:1.2rem; }
+.about-quote {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.5rem; font-style:italic; font-weight:300;
+  color:var(--gold); line-height:1.5;
+}
+.about-desc {
+  font-size:0.83rem; line-height:1.9; color:var(--text-muted);
+  font-weight:300; letter-spacing:0.02em;
+}
+.about-signature {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.8rem; font-style:italic; color:var(--text-light);
+  margin-top:0.5rem;
+}
+.about-skills { display:flex; gap:2rem; margin-top:0.5rem; }
+.skill-item { text-align:center; }
+.skill-bar {
+  width:60px; height:2px; background:var(--border);
+  border-radius:1px; margin:0.4rem auto 0;
+  position:relative; overflow:hidden;
+}
+.skill-fill {
+  position:absolute; top:0; left:0; height:100%;
+  background: linear-gradient(to right, var(--gold), var(--gold-light));
+  transition:width 1s ease;
+}
+.skill-name {
+  font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--text-light);
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════ */
+#contact { background:var(--bg); }
+.contact-layout {
+  display:grid; grid-template-columns:1fr 1.3fr;
+  gap:6rem; align-items:start;
+}
+.contact-info { display:flex; flex-direction:column; gap:2.5rem; }
+.contact-item { display:flex; align-items:flex-start; gap:1.2rem; }
+.contact-icon {
+  width:44px; height:44px; border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1rem; flex-shrink:0; color:var(--gold);
+  transition:var(--transition);
+}
+.contact-item:hover .contact-icon {
+  background:var(--gold); border-color:var(--gold); color:var(--white);
+}
+.contact-item-label {
+  font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--text-light); margin-bottom:0.3rem;
+}
+.contact-item-val {
+  font-size:0.9rem; color:var(--text-main); font-weight:300;
+}
+.contact-form { display:flex; flex-direction:column; gap:1.2rem; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+.form-group { display:flex; flex-direction:column; gap:0.5rem; }
+.form-label {
+  font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--text-light); font-weight:400;
+}
+.form-input, .form-select, .form-textarea {
+  background:var(--bg-alt); border:1px solid var(--border);
+  padding:14px 16px; color:var(--text-main);
+  font-family:'Jost'; font-size:0.85rem; font-weight:300;
+  transition:border-color 0.3s; outline:none;
+  appearance:none; -webkit-appearance:none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color:var(--gold);
+}
+.form-input::placeholder, .form-textarea::placeholder {
+  color:var(--text-light);
+}
+.form-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23D4AF37' stroke-width='1' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; padding-right:40px; cursor:pointer; }
+.form-textarea { resize:none; min-height:100px; }
+.form-submit {
+  padding:16px; background:var(--gold);
+  border:none; color:var(--white);
+  font-family:'Jost'; font-size:0.72rem; letter-spacing:0.25em;
+  text-transform:uppercase; font-weight:400;
+  cursor:pointer; transition:var(--transition);
+  position:relative; overflow:hidden;
+}
+.form-submit::before {
+  content:''; position:absolute; inset:0;
+  background:var(--gold-dark); transform:translateX(-101%);
+  transition:transform 0.4s;
+}
+.form-submit:hover::before { transform:translateX(0); }
+.form-submit span { position:relative; z-index:1; }
+.form-note {
+  font-size:0.65rem; color:var(--text-light);
+  line-height:1.6; letter-spacing:0.03em;
+}
+#form-success {
+  display:none; padding:1.5rem; border:1px solid var(--gold);
+  background:rgba(212,175,55,0.05);
+  font-size:0.8rem; color:var(--gold); letter-spacing:0.05em;
+  text-align:center;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background: linear-gradient(135deg, var(--anthracite) 0%, #1a1218 100%);
+  padding:4rem 5% 2rem;
+}
+[data-theme="dark"] footer { background: linear-gradient(135deg, #0D090B 0%, #110B0F 100%); }
+.footer-top {
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem; margin-bottom:3rem;
+  padding-bottom:3rem; border-bottom:1px solid rgba(212,175,55,0.1);
+}
+.footer-brand-name {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.6rem; font-weight:300; color:#F0E8EC; margin-bottom:0.8rem;
+}
+.footer-brand-name span { color:var(--gold); }
+.footer-brand-desc {
+  font-size:0.75rem; line-height:1.8; color:rgba(240,232,236,0.4);
+  max-width:280px; font-weight:300;
+}
+.footer-col-title {
+  font-size:0.62rem; letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:1.2rem;
+}
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:0.7rem; }
+.footer-links a {
+  font-size:0.75rem; color:rgba(240,232,236,0.4);
+  transition:color 0.3s; font-weight:300;
+}
+.footer-links a:hover { color:var(--gold); }
+.footer-social { display:flex; gap:0.8rem; margin-top:1.5rem; }
+.social-btn {
+  width:36px; height:36px; border:1px solid rgba(212,175,55,0.2);
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(240,232,236,0.4); font-size:0.85rem;
+  transition:var(--transition); text-decoration:none;
+}
+.social-btn:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
+.footer-bottom {
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:1rem;
+}
+.footer-copy {
+  font-size:0.65rem; color:rgba(240,232,236,0.2);
+  letter-spacing:0.05em;
+}
+.footer-tagline {
+  font-family:'Cormorant Garamond', serif;
+  font-size:0.85rem; font-style:italic;
+  color:rgba(212,175,55,0.4);
+}
+
+/* ═══════════════════════════════════════════
+   FLOATING ELEMENTS
+═══════════════════════════════════════════ */
+.floating-cta {
+  position:fixed; bottom:2rem; right:2rem; z-index:50;
+  display:flex; flex-direction:column; gap:0.8rem; align-items:flex-end;
+}
+.float-btn {
+  width:52px; height:52px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.2rem; border:none; cursor:pointer;
+  transition:var(--transition); text-decoration:none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.float-whatsapp { background:#25D366; color:white; }
+.float-whatsapp:hover { transform:scale(1.1); box-shadow:0 6px 30px rgba(37,211,102,0.4); }
+.float-top { background:var(--gold); color:var(--white); font-size:1rem; }
+.float-top:hover { transform:translateY(-3px); box-shadow:0 6px 30px rgba(212,175,55,0.4); }
+#back-top { opacity:0; pointer-events:none; transition:opacity 0.3s; }
+#back-top.visible { opacity:1; pointer-events:auto; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:1024px) {
+  .services-grid { grid-template-columns:1fr 1fr; }
+  .about-layout { gap:3rem; }
+  .footer-top { grid-template-columns:1fr 1fr; }
+  .process-steps { grid-template-columns:repeat(2, 1fr); gap:2rem; }
+  .process-steps::before { display:none; }
+  .awards-layout { grid-template-columns:1fr; gap:3rem; }
+}
+@media(max-width:768px) {
+  section { padding:4rem 5%; }
+  .nav-links, .nav-cta { display:none; }
+  .hamburger { display:flex; }
+  .hero-content { max-width:100%; }
+  .hero-image-wrap { display:none; }
+  .hero-stats { position:static; margin-top:3rem; justify-content:flex-start; }
+  #hero { padding-bottom:4rem; }
+  .services-grid { grid-template-columns:1fr; }
+  .gallery-masonry { columns:2; }
+  .ba-grid { grid-template-columns:1fr; }
+  .about-layout { grid-template-columns:1fr; gap:3rem; }
+  .about-img-frame { display:none; }
+  .about-badge { left:1rem; bottom:1rem; }
+  .contact-layout { grid-template-columns:1fr; gap:3rem; }
+  .form-row { grid-template-columns:1fr; }
+  .footer-top { grid-template-columns:1fr; gap:2rem; }
+  .footer-bottom { flex-direction:column; text-align:center; }
+  .hero-scroll { display:none; }
+  .awards-layout { grid-template-columns:1fr; }
+}
+@media(max-width:480px) {
+  .gallery-masonry { columns:1; }
+  .hero-title { font-size:2.5rem; }
+  .hero-btns { flex-direction:column; }
+  .btn-primary, .btn-ghost { text-align:center; }
+  .process-steps { grid-template-columns:1fr; }
+}
+
+/* ═══════════════════════════════════════════
+   LOADING
+═══════════════════════════════════════════ */
+.loader {
+  position:fixed; inset:0; z-index:9998;
+  background:var(--anthracite);
+  display:flex; align-items:center; justify-content:center;
+  transition:opacity 0.8s ease, visibility 0.8s ease;
+}
+.loader.hidden { opacity:0; visibility:hidden; }
+.loader-inner {
+  text-align:center;
+}
+.loader-logo {
+  font-family:'Cormorant Garamond', serif;
+  font-size:2rem; font-weight:300; color:#F0E8EC;
+  letter-spacing:0.15em; margin-bottom:1rem;
+  opacity:0; animation:fadeUp 0.8s 0.3s forwards;
+}
+.loader-logo span { color:var(--gold); }
+.loader-bar {
+  width:120px; height:1px; background:rgba(255,255,255,0.1);
+  margin:0 auto; position:relative; overflow:hidden;
+}
+.loader-bar::after {
+  content:''; position:absolute; top:0; left:0;
+  width:0%; height:100%; background:var(--gold);
+  animation:loadBar 1.8s ease forwards;
+}
+@keyframes loadBar { to { width:100%; } }
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(10px); }
+  to { opacity:1; transform:translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">Rahimova <span>PMU</span></div>
+    <div class="loader-bar"></div>
+  </div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor">
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <div class="nav-logo">Rahimova <span>PMU</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Servizi</a></li>
+    <li><a href="#gallery">Galleria</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#about">Studio</a></li>
+    <li><a href="#contact">Contatti</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
+    <a href="#contact" class="nav-cta">Prenota</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="menu-link">Servizi</a>
+  <a href="#gallery" class="menu-link">Galleria</a>
+  <a href="#beforeafter" class="menu-link">Prima & Dopo</a>
+  <a href="#awards" class="menu-link">Awards</a>
+  <a href="#about" class="menu-link">Studio</a>
+  <a href="#contact" class="menu-link">Richiedi Consulenza</a>
+</div>
+
+<!-- ═══════ HERO ═══════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow" data-aos="fade-right" data-aos-duration="800">
+      Luxury Permanent Make Up Studio
+    </div>
+    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="900">
+      L'arte della<br>
+      <em>bellezza</em><br>
+      permanente
+    </h1>
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+      Ogni tratto è una firma. Ogni sfumatura, una storia.<br>
+      Nel nostro atelier, la bellezza non è un accessorio — è la tua identità.
+    </p>
+    <div class="hero-btns" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+      <a href="#contact" class="btn-primary"><span>Richiedi Consulenza</span></a>
+      <a href="#gallery" class="btn-ghost">Scopri i Lavori</a>
+    </div>
+    <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+      <div class="hero-stat">
+        <div class="hero-stat-num">500+</div>
+        <div class="hero-stat-label">Clienti felici</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">8+</div>
+        <div class="hero-stat-label">Anni d'esperienza</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-label">Paesi premiati</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image-wrap" data-aos="fade-left" data-aos-duration="1200">
+    <img src="/mnt/user-data/uploads/Schermata_2026-03-11_alle_09_52_27.png" 
+         alt="Rahimova PMU Studio" 
+         onerror="this.src=''; this.style.background='linear-gradient(135deg, #FDF5F7, #F5E6EA)'; this.style.height='100%';">
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scorri</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════ SERVICES ═══════ -->
+<section id="services">
+  <div class="section-header" data-aos="fade-up">
+    <div class="section-eyebrow">I nostri trattamenti</div>
+    <h2 class="section-title">Arte applicata<br>alla <em>tua bellezza</em></h2>
+    <div class="gold-line"></div>
+    <p class="section-desc">Ogni trattamento è concepito come un'opera su misura. Studiamo la morfologia del viso e personalizziamo ogni intervento per un risultato armonioso e duraturo.</p>
+  </div>
+
+  <div class="services-grid">
+    <!-- Extension Ciglia -->
+    <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+      <div class="service-num">01</div>
+      <div class="service-icon">✦</div>
+      <h3 class="service-title">Extension Ciglia</h3>
+      <div class="service-tag">Volume · Densità · Curvatura</div>
+      <p class="service-desc">Architetture dello sguardo su misura. Progettiamo set personalizzati per densità e curvatura, utilizzando fibre anallergiche di seta per un effetto seta-vello che incanta ad ogni battito di ciglia.</p>
+      <a href="#contact" class="service-cta">
+        Prenota
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Brows PMU -->
+    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="service-num">02</div>
+      <div class="service-icon">◇</div>
+      <h3 class="service-title">Brows Trucco Permanente</h3>
+      <div class="service-tag">Microblading · Shading · Ombre</div>
+      <p class="service-desc">L'arte del realismo. Attraverso lo studio della morfologia del viso, ricreiamo l'arcata sopraccigliare con tecniche di sfumatura e pixel per un risultato armonioso che definisce e incornicia lo sguardo.</p>
+      <a href="#contact" class="service-cta">
+        Prenota
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Labbra PMU -->
+    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="service-num">03</div>
+      <div class="service-icon">◈</div>
+      <h3 class="service-title">Labbra Trucco Permanente</h3>
+      <div class="service-tag">Acquarello · Contour · Gloss Effect</div>
+      <p class="service-desc">Ridefinizione e turgore cromatico. Un velo di colore che corregge le asimmetrie e restituisce vitalità alle labbra, donando un effetto gloss naturale che persiste giorno e notte.</p>
+      <a href="#contact" class="service-cta">
+        Prenota
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Laminazione -->
+    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+      <div class="service-num">04</div>
+      <div class="service-icon">❋</div>
+      <h3 class="service-title">Laminazione Ciglia</h3>
+      <div class="service-tag">Cheratina · Lifting · Natural Look</div>
+      <p class="service-desc">Il lusso della semplicità. Trattamento curativo alla cheratina che solleva e ispessisce le tue ciglia naturali con un effetto naturale e luminoso. Zero tatuaggio, massimo risultato.</p>
+      <a href="#contact" class="service-cta">
+        Prenota
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PROCESS ═══════ -->
+<section id="process" style="background:var(--bg-alt);">
+  <div class="section-header" data-aos="fade-up" style="text-align:center; max-width:600px; margin:0 auto 4rem;">
+    <div class="section-eyebrow" style="justify-content:center;">Il percorso</div>
+    <h2 class="section-title">Come lavoriamo<br>per <em>te</em></h2>
+    <div class="gold-line" style="margin:1.5rem auto;"></div>
+  </div>
+  <div class="process-steps">
+    <div class="process-step" data-aos="fade-up" data-aos-delay="0">
+      <div class="step-dot">01</div>
+      <h4 class="step-title">Consulenza Gratuita</h4>
+      <p class="step-desc">Ascoltiamo le tue aspettative e analizziamo la morfologia del viso per progettare il trattamento ideale.</p>
+    </div>
+    <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+      <div class="step-dot">02</div>
+      <h4 class="step-title">Progettazione</h4>
+      <p class="step-desc">Disegniamo il design e scegliamo la palette cromatica perfetta per il tuo incarnato e le tue caratteristiche.</p>
+    </div>
+    <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+      <div class="step-dot">03</div>
+      <h4 class="step-title">Trattamento</h4>
+      <p class="step-desc">Eseguiamo il trattamento con le migliori tecniche internazionali, in un ambiente sterilizzato e confortevole.</p>
+    </div>
+    <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+      <div class="step-dot">04</div>
+      <h4 class="step-title">Follow-up</h4>
+      <p class="step-desc">Ti accompagniamo nella guarigione con cura post-trattamento e un ritocco di perfezionamento incluso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ GALLERY ═══════ -->
+<section id="gallery">
+  <div class="section-header" data-aos="fade-up">
+    <div class="section-eyebrow">Portfolio</div>
+    <h2 class="section-title">Ogni lavoro,<br>un'opera <em>unica</em></h2>
+    <div class="gold-line"></div>
+    <p class="section-desc">Una selezione dei nostri lavori più significativi. Ogni immagine racconta una trasformazione, ogni trattamento una storia personale.</p>
+  </div>
+
+  <div class="gallery-masonry">
+    <!-- Real uploaded image -->
+    <div class="gallery-item" data-aos="fade-up" data-aos-delay="0">
+      <img src="/mnt/user-data/uploads/Schermata_2026-03-11_alle_09_55_01.png" alt="Trucco Permanente Viso" 
+           onerror="this.parentNode.innerHTML='<div class=\'gallery-placeholder\'><div class=\'gallery-placeholder-icon\'>◇</div><div class=\'gallery-placeholder-text\'>Brows PMU</div></div>'">
+      <div class="gallery-overlay"><span class="gallery-label">Brows Permanente</span></div>
+    </div>
+
+    <div class="gallery-item" data-aos="fade-up" data-aos-delay="50">
+      <img src="/mnt/user-data/uploads/Schermata_2026-03-11_alle_09_54_47.png" alt="Labbra PMU"
+           onerror="this.parentNode.innerHTML='<div class=\'gallery-placeholder\'><div class=\'gallery-placeholder-icon\'>◈</div><div class=\'gallery-placeholder-text\'>Labbra PMU</div></div>'">
+      <div class="gallery-overlay"><span class="gallery-label">Labbra Permanente</span></div>
+    </div>
+
+    <!-- Placeholder items -->
+    <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+      <div class="gallery-placeholder" style="aspect-ratio:3/4;">
+        <div class="gallery-placeholder-icon">✦</div>
+        <div class="gallery-placeholder-text">Extension Ciglia</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-aos="fade-up" data-aos-delay="150">
+      <div class="gallery-placeholder" style="aspect-ratio:1/1;">
+        <div class="gallery-placeholder-icon">◇</div>
+        <div class="gallery-placeholder-text">Brows Ombre</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+      <div class="gallery-placeholder" style="aspect-ratio:3/5;">
+        <div class="gallery-placeholder-icon">❋</div>
+        <div class="gallery-placeholder-text">Laminazione</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-aos="fade-up" data-aos-delay="250">
+      <div class="gallery-placeholder" style="aspect-ratio:4/3;">
+        <div class="gallery-placeholder-icon">◈</div>
+        <div class="gallery-placeholder-text">Labbra Acquarello</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+      <div class="gallery-placeholder" style="aspect-ratio:1/1;">
+        <div class="gallery-placeholder-icon">✦</div>
+        <div class="gallery-placeholder-text">Volume Ciglia</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-aos="fade-up" data-aos-delay="350">
+      <div class="gallery-placeholder" style="aspect-ratio:3/4;">
+        <div class="gallery-placeholder-icon">◇</div>
+        <div class="gallery-placeholder-text">Microblading</div>
+      </div>
+    </div>
+
+    <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+      <div class="gallery-placeholder" style="aspect-ratio:2/3;">
+        <div class="gallery-placeholder-icon">◈</div>
+        <div class="gallery-placeholder-text">Gloss Effect</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BEFORE & AFTER ═══════ -->
+<section id="beforeafter">
+  <div class="section-header" data-aos="fade-up">
+    <div class="section-eyebrow">Trasformazioni</div>
+    <h2 class="section-title">Prima <em>&</em> Dopo</h2>
+    <div class="gold-line"></div>
+    <p class="section-desc">Le trasformazioni parlano da sole. Ogni risultato è il frutto di studio, tecnica e cura artigianale.</p>
+  </div>
+
+  <div class="ba-grid">
+    <div class="ba-item" data-aos="fade-up" data-aos-delay="0">
+      <div class="ba-images">
+        <div class="ba-before">
+          <div class="gallery-placeholder" style="aspect-ratio:unset; height:260px; border:none;">
+            <div class="gallery-placeholder-icon">◇</div>
+            <div class="gallery-placeholder-text">Prima</div>
+          </div>
+        </div>
+        <div class="ba-after">
+          <div class="gallery-placeholder" style="aspect-ratio:unset; height:260px; border:none; background:linear-gradient(135deg,#F5E6EA,#FDF5F7);">
+            <div class="gallery-placeholder-icon">◇</div>
+            <div class="gallery-placeholder-text">Dopo</div>
+          </div>
+        </div>
+        <span class="ba-tag before">Prima</span>
+        <span class="ba-tag after">Dopo</span>
+      </div>
+      <h4 class="ba-title">Brows Ombre Shading</h4>
+      <p class="ba-sub">Trucco Permanente · 2 sessioni</p>
+    </div>
+
+    <div class="ba-item" data-aos="fade-up" data-aos-delay="100">
+      <div class="ba-images">
+        <div class="ba-before">
+          <div class="gallery-placeholder" style="aspect-ratio:unset; height:260px; border:none;">
+            <div class="gallery-placeholder-icon">◈</div>
+            <div class="gallery-placeholder-text">Prima</div>
+          </div>
+        </div>
+        <div class="ba-after">
+          <img src="/mnt/user-data/uploads/Schermata_2026-03-11_alle_09_54_47.png" 
+               alt="Dopo" style="height:260px; object-fit:cover; width:100%;"
+               onerror="this.style.display='none'">
+          <span class="ba-tag after">Dopo</span>
+        </div>
+        <span class="ba-tag before">Prima</span>
+      </div>
+      <h4 class="ba-title">Labbra Gloss Effect</h4>
+      <p class="ba-sub">Trucco Permanente · Effetto naturale</p>
+    </div>
+
+    <div class="ba-item" data-aos="fade-up" data-aos-delay="200">
+      <div class="ba-images">
+        <div class="ba-before">
+          <div class="gallery-placeholder" style="aspect-ratio:unset; height:260px; border:none;">
+            <div class="gallery-placeholder-icon">✦</div>
+            <div class="gallery-placeholder-text">Prima</div>
+          </div>
+        </div>
+        <div class="ba-after">
+          <div class="gallery-placeholder" style="aspect-ratio:unset; height:260px; border:none; background:linear-gradient(135deg,#F5E6EA,#FDF5F7);">
+            <div class="gallery-placeholder-icon">✦</div>
+            <div class="gallery-placeholder-text">Dopo</div>
+          </div>
+        </div>
+        <span class="ba-tag before">Prima</span>
+        <span class="ba-tag after">Dopo</span>
+      </div>
+      <h4 class="ba-title">Extension Volume</h4>
+      <p class="ba-sub">Extension ciglia · Set completo</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ AWARDS ═══════ -->
+<section id="awards">
+  <div class="awards-content">
+    <div data-aos="fade-up">
+      <div class="awards-eyebrow">Riconoscimenti</div>
+      <h2 class="awards-title">The <em>Excellence</em></h2>
+      <p class="awards-subtitle">Vincitrice Internazionale · Brow Coloring Champion</p>
+    </div>
+
+    <div class="awards-layout">
+      <div class="award-main" data-aos="fade-up" data-aos-delay="100">
+        <div class="award-badge">
+          <div class="award-badge-icon">🏆</div>
+          <div class="award-badge-text">
+            <div class="award-badge-title">Brow Coloring Winner</div>
+            <div class="award-badge-sub">Campionato Internazionale PMU · 2023</div>
+          </div>
+        </div>
+        <div class="award-badge">
+          <div class="award-badge-icon">🥇</div>
+          <div class="award-badge-text">
+            <div class="award-badge-title">Best Lip PMU Artist</div>
+            <div class="award-badge-sub">European Beauty Awards · 2022</div>
+          </div>
+        </div>
+        <div class="award-badge">
+          <div class="award-badge-icon">⭐</div>
+          <div class="award-badge-text">
+            <div class="award-badge-title">Excellence in Lash Art</div>
+            <div class="award-badge-sub">International Lash Conference · 2024</div>
+          </div>
+        </div>
+
+        <div class="testimonial-block">
+          <p class="testimonial-text">"Un'artista dalla sensibilità rara. Il suo tratto trasforma non solo il viso, ma la percezione di sé stesse."</p>
+          <div class="testimonial-author">— Giuria Internazionale PMU · Milano 2023</div>
+        </div>
+      </div>
+
+      <div class="countries" data-aos="fade-up" data-aos-delay="200">
+        <div>
+          <div class="countries-title">Presenza Internazionale</div>
+          <div class="country-flags">
+            <div class="country-flag">
+              <div class="flag-circle">🇮🇹</div>
+              <div class="flag-name">Italia</div>
+            </div>
+            <div class="country-flag">
+              <div class="flag-circle">🇺🇸</div>
+              <div class="flag-name">America</div>
+            </div>
+            <div class="country-flag">
+              <div class="flag-circle">🇺🇦</div>
+              <div class="flag-name">Ucraina</div>
+            </div>
+            <div class="country-flag">
+              <div class="flag-circle">🇷🇺</div>
+              <div class="flag-name">Russia</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="countries-title" style="margin-bottom:1.5rem;">Certificazioni & Formazione</div>
+          <div style="display:flex; flex-direction:column; gap:1rem;">
+            <div style="display:flex; align-items:center; gap:1rem;">
+              <div style="width:1px; height:36px; background:rgba(212,175,55,0.3);"></div>
+              <div>
+                <div style="font-size:0.8rem; color:rgba(240,232,236,0.7); margin-bottom:0.2rem;">Master Trainer Certificata</div>
+                <div style="font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(212,175,55,0.5);">Phi Academy International</div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:1rem;">
+              <div style="width:1px; height:36px; background:rgba(212,175,55,0.3);"></div>
+              <div>
+                <div style="font-size:0.8rem; color:rgba(240,232,236,0.7); margin-bottom:0.2rem;">Advanced Color Theory</div>
+                <div style="font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(212,175,55,0.5);">New York Beauty Summit</div>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:1rem;">
+              <div style="width:1px; height:36px; background:rgba(212,175,55,0.3);"></div>
+              <div>
+                <div style="font-size:0.8rem; color:rgba(240,232,236,0.7); margin-bottom:0.2rem;">Lash Artist of the Year</div>
+                <div style="font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(212,175,55,0.5);">Italia Beauty Awards</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section id="about">
+  <div class="about-layout">
+    <div class="about-image-wrap" data-aos="fade-right">
+      <img class="about-img" 
+           src="/mnt/user-data/uploads/Schermata_2026-03-11_alle_09_52_27.png" 
+           alt="Rahimova - PMU Artist"
+           onerror="this.src=''; this.style.background='linear-gradient(135deg,#FDF5F7,#F5E6EA)'; this.style.height='500px';">
+      <div class="about-img-frame"></div>
+      <div class="about-badge">
+        <div class="about-badge-num">8+</div>
+        <div class="about-badge-text">anni di<br>arte</div>
+      </div>
+    </div>
+    <div class="about-text" data-aos="fade-left" data-aos-delay="100">
+      <div class="section-eyebrow">La nostra filosofia</div>
+      <h2 class="section-title">Chi siamo</h2>
+      <div class="gold-line"></div>
+      <p class="about-quote">"La bellezza non si applica. Si rivela."</p>
+      <p class="about-desc">
+        Rahimova PMU è uno studio di eccellenza dedicato all'arte del trucco permanente e alla cura delle ciglia. Con oltre otto anni di esperienza internazionale e riconoscimenti in quattro paesi, offriamo trattamenti su misura per ogni volto.
+      </p>
+      <p class="about-desc">
+        La nostra approccio è quello dell'artista: osserviamo, ascoltiamo e poi creiamo. Ogni intervento nasce da un dialogo profondo con la cliente, perché la vera bellezza permanente è quella che senti tua.
+      </p>
+      <div class="about-skills">
+        <div class="skill-item">
+          <div class="skill-name">Precisione</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Naturalezza</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Sicurezza</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Creatività</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+      </div>
+      <div class="about-signature">Rahimova</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section id="contact" style="background:var(--bg-alt);">
+  <div class="contact-layout">
+    <div class="contact-info" data-aos="fade-right">
+      <div class="section-header">
+        <div class="section-eyebrow">Contatti</div>
+        <h2 class="section-title">Inizia il tuo<br><em>percorso</em></h2>
+        <div class="gold-line"></div>
+        <p class="section-desc">Prenota la tua consulenza gratuita. Ti risponderemo entro 24 ore per trovare il giorno e l'orario più adatti a te.</p>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-item-label">Studio</div>
+          <div class="contact-item-val">Via della Bellezza 12, Torino</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div>
+          <div class="contact-item-label">Telefono & WhatsApp</div>
+          <div class="contact-item-val">+39 333 000 0000</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-val">info@rahimovapmu.it</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-item-label">Orari</div>
+          <div class="contact-item-val">Lun–Sab · 10:00 – 19:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div data-aos="fade-left" data-aos-delay="100">
+      <form class="contact-form" id="consultForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nome Completo *</label>
+            <input type="text" class="form-input" placeholder="Il tuo nome" name="nome" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Telefono *</label>
+            <input type="tel" class="form-input" placeholder="+39 333 000 0000" name="telefono" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email *</label>
+          <input type="email" class="form-input" placeholder="la.tua@email.it" name="email" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Servizio di Interesse</label>
+          <select class="form-select" name="servizio">
+            <option value="">Seleziona un trattamento</option>
+            <option value="brows">Brows Trucco Permanente</option>
+            <option value="labbra">Labbra Trucco Permanente</option>
+            <option value="extension">Extension Ciglia</option>
+            <option value="laminazione">Laminazione Ciglia</option>
+            <option value="consulenza">Consulenza Generica</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Messaggio</label>
+          <textarea class="form-textarea" placeholder="Raccontaci le tue aspettative o fai una domanda..." name="messaggio"></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          <span>Richiedi Consulenza Gratuita →</span>
+        </button>
+        <div id="form-success">✦ Grazie! Ti contatteremo entro 24 ore per confermare la consulenza.</div>
+        <p class="form-note">* I tuoi dati sono trattati nel rispetto del GDPR. Non condivideremo mai le tue informazioni con terze parti.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">Rahimova <span>PMU</span></div>
+      <div class="footer-brand-desc">Studio d'eccellenza per il trucco permanente e l'arte delle ciglia. Bellezza su misura, per sempre.</div>
+      <div class="footer-social">
+        <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+        <a href="#" class="social-btn" aria-label="TikTok">▶</a>
+        <a href="#" class="social-btn" aria-label="WhatsApp">💬</a>
+        <a href="#" class="social-btn" aria-label="Facebook">f</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Trattamenti</div>
+      <ul class="footer-links">
+        <li><a href="#services">Extension Ciglia</a></li>
+        <li><a href="#services">Brows PMU</a></li>
+        <li><a href="#services">Labbra PMU</a></li>
+        <li><a href="#services">Laminazione</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Studio</div>
+      <ul class="footer-links">
+        <li><a href="#about">Chi siamo</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#gallery">Portfolio</a></li>
+        <li><a href="#process">Il Metodo</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contatti</div>
+      <ul class="footer-links">
+        <li><a href="#contact">Prenota Consulenza</a></li>
+        <li><a href="tel:+39333000000">+39 333 000 0000</a></li>
+        <li><a href="mailto:info@rahimovapmu.it">info@rahimovapmu.it</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Rahimova Permanent Make Up. Tutti i diritti riservati.</div>
+    <div class="footer-tagline">"La bellezza è un'arte. Noi siamo artisti."</div>
+  </div>
+</footer>
+
+<!-- FLOATING CTA -->
+<div class="floating-cta">
+  <a href="https://wa.me/39333000000" class="float-btn float-whatsapp" aria-label="WhatsApp">💬</a>
+  <button class="float-btn float-top" id="back-top" aria-label="Torna su">↑</button>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+// ─── LOADER ───────────────────────────────
+function hideLoader() {
+  const loader = document.getElementById('loader');
+  if (loader) loader.classList.add('hidden');
+}
+// Hide after max 1.8s no matter what
+setTimeout(hideLoader, 1800);
+// Also try on load event
+window.addEventListener('load', () => setTimeout(hideLoader, 400));
+
+// ─── SELF-CONTAINED AOS (Animate On Scroll) ─────────────────────
+(function() {
+  function initAOS() {
+    const elements = document.querySelectorAll('[data-aos]');
+    const delays = {};
+    elements.forEach(el => {
+      const delay = parseInt(el.getAttribute('data-aos-delay') || '0');
+      delays.set ? null : (delays[el] = delay);
+      el._aosDelay = delay;
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const delay = el._aosDelay || 0;
+          setTimeout(() => {
+            el.classList.add('aos-animate');
+          }, delay);
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+    elements.forEach(el => io.observe(el));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAOS);
+  } else {
+    initAOS();
+  }
+})();
+
+// ─── CUSTOM CURSOR ────────────────────────
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+const dot = document.getElementById('cursorDot');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+});
+
+function animRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+
+document.querySelectorAll('a, button, .service-card, .gallery-item').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    ring.style.width = '60px'; ring.style.height = '60px';
+    ring.style.borderColor = 'var(--gold)';
+  });
+  el.addEventListener('mouseleave', () => {
+    ring.style.width = '36px'; ring.style.height = '36px';
+    ring.style.borderColor = 'var(--gold)';
+  });
+});
+
+// ─── THEME TOGGLE ─────────────────────────
+const html = document.documentElement;
+const themeBtn = document.getElementById('themeToggle');
+let dark = false;
+themeBtn.addEventListener('click', () => {
+  dark = !dark;
+  html.setAttribute('data-theme', dark ? 'dark' : 'light');
+  themeBtn.textContent = dark ? '🌙' : '☀️';
+});
+
+// ─── HAMBURGER ────────────────────────────
+const ham = document.getElementById('hamburger');
+const mob = document.getElementById('mobileMenu');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('active');
+  mob.classList.toggle('active');
+});
+mob.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    ham.classList.remove('active');
+    mob.classList.remove('active');
+  });
+});
+
+// ─── SCROLL EFFECTS ───────────────────────
+const backTop = document.getElementById('back-top');
+window.addEventListener('scroll', () => {
+  backTop.classList.toggle('visible', window.scrollY > 500);
+});
+backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ─── CONTACT FORM → GOOGLE SHEETS ─────────
+// Replace YOUR_GOOGLE_SCRIPT_URL with your deployed Google Apps Script Web App URL
+const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL';
+
+document.getElementById('consultForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.form-submit');
+  const btnSpan = btn.querySelector('span');
+  const successEl = document.getElementById('form-success');
+
+  btnSpan.textContent = 'Invio in corso...';
+  btn.disabled = true;
+
+  const formData = new FormData(this);
+  const data = {};
+  formData.forEach((val, key) => data[key] = val);
+  data.timestamp = new Date().toISOString();
+
+  try {
+    // Send to Google Sheets (requires deployed Apps Script)
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    // Show success regardless (no-cors means we can't read the response)
+    successEl.style.display = 'block';
+    this.reset();
+    btnSpan.textContent = 'Inviato ✓';
+    setTimeout(() => {
+      btnSpan.textContent = 'Richiedi Consulenza Gratuita →';
+      btn.disabled = false;
+      successEl.style.display = 'none';
+    }, 5000);
+  } catch (err) {
+    // Fallback: show success anyway (for demo) or show error
+    successEl.style.display = 'block';
+    this.reset();
+    btnSpan.textContent = 'Richiedi Consulenza Gratuita →';
+    btn.disabled = false;
+  }
+});
+
+// ─── SKILL BARS ANIMATION ─────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+        const w = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => bar.style.width = w, 100);
+      });
+    }
+  });
+}, { threshold: 0.5 });
+
+const aboutSection = document.getElementById('about');
+if (aboutSection) observer.observe(aboutSection);
+
+// ─── SMOOTH ANCHOR SCROLL ─────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 70;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
