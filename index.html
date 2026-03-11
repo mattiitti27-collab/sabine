@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rahimova PMU – Studio d'eccellenza per trucco permanente, extension ciglia e laminazione a Torino. Vincitrice internazionale, oltre 8 anni di esperienza.">
+<title>Rahimova PMU | Luxury Permanent Make Up · Torino</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════
+   TOKENS
+════════════════════════════════════════ */
+:root {
+  --gold: #D4AF37;
+  --gold2: #A8881C;
+  --gold3: #F0D060;
+  --glow: rgba(212,175,55,.3);
+  --bg:  #0A0709;
+  --bg2: #100C0E;
+  --bg3: #181218;
+  --txt: #F0E8EC;
+  --txt2: #A89098;
+  --txt3: #5A4850;
+  --bdr:  rgba(212,175,55,.12);
+  --bdr2: rgba(212,175,55,.32);
+  --nav:  rgba(10,7,9,.96);
+  --glass: rgba(255,255,255,.04);
+  --tr: .4s cubic-bezier(.23,1,.32,1);
+  --tr-fast: .25s cubic-bezier(.23,1,.32,1);
+}
+[data-theme="light"] {
+  --bg:  #FDF5F7;
+  --bg2: #FFFFFF;
+  --bg3: #F4EAF0;
+  --txt: #1A1215;
+  --txt2: #5A4A50;
+  --txt3: #9A8890;
+  --bdr:  rgba(212,175,55,.18);
+  --bdr2: rgba(212,175,55,.42);
+  --nav:  rgba(253,245,247,.97);
+  --glass: rgba(0,0,0,.025);
+  --glow: rgba(212,175,55,.18);
+}
+
+/* ════════════════════════════════════════
+   RESET & BASE
+════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Jost', system-ui, sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--txt);
+  overflow-x: hidden;
+  line-height: 1.7;
+  transition: background .45s ease, color .45s ease;
+}
+img { max-width: 100%; display: block; object-fit: cover; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; }
+::selection { background: var(--gold); color: #000; }
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* ════════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+.reveal-d5 { transition-delay: .5s; }
+
+/* ════════════════════════════════════════
+   NAVIGATION
+════════════════════════════════════════ */
+nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 200;
+  height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0 clamp(1rem,4vw,4rem);
+  background: var(--nav);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--bdr);
+  transition: background var(--tr), box-shadow var(--tr);
+}
+nav.sd { box-shadow: 0 4px 32px rgba(0,0,0,.5); }
+
+.logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.2rem; font-weight: 300;
+  letter-spacing: .16em; text-transform: uppercase;
+  white-space: nowrap; flex-shrink: 0; color: var(--txt);
+}
+.logo b { color: var(--gold); font-style: italic; font-weight: 400; }
+
+.nlinks { display: flex; gap: 1.6rem; list-style: none; }
+.nlinks a {
+  font-size: .61rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--txt3); font-weight: 400; cursor: pointer;
+  transition: color .3s; position: relative; padding-bottom: 3px;
+}
+.nlinks a::after {
+  content: ''; position: absolute; bottom: 0; left: 50%;
+  width: 0; height: 1px; background: var(--gold);
+  transition: width .3s, left .3s;
+}
+.nlinks a:hover { color: var(--gold); }
+.nlinks a:hover::after { width: 100%; left: 0; }
+
+.tpill {
+  display: flex; border: 1px solid var(--bdr2);
+  border-radius: 30px; overflow: hidden; flex-shrink: 0;
+}
+.tpill button {
+  padding: 6px 13px; border: none; background: transparent;
+  cursor: pointer; font-size: .61rem; letter-spacing: .08em;
+  color: var(--txt3); transition: background .25s, color .25s;
+  display: flex; align-items: center; gap: .3rem; white-space: nowrap;
+}
+.tpill button.on { background: var(--gold); color: #000; font-weight: 500; }
+.tpill button:not(.on):hover { color: var(--gold); }
+
+.ncta {
+  font-size: .61rem; letter-spacing: .2em; text-transform: uppercase;
+  padding: 8px 20px; border: 1px solid var(--bdr2); color: var(--gold);
+  background: transparent; cursor: pointer; flex-shrink: 0;
+  transition: var(--tr); white-space: nowrap; position: relative; overflow: hidden;
+}
+.ncta::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--gold); transform: scaleX(0);
+  transform-origin: left; transition: transform var(--tr); z-index: 0;
+}
+.ncta:hover::before { transform: scaleX(1); }
+.ncta:hover { color: #000; }
+.ncta span { position: relative; z-index: 1; }
+
+.hbg {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 5px; flex-shrink: 0;
+}
+.hbg span { display: block; width: 22px; height: 1.5px; background: var(--txt); transition: var(--tr); }
+.hbg.on span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hbg.on span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hbg.on span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Mobile drawer */
+.mdr {
+  position: fixed; top: 64px; left: 0; width: 100%; z-index: 190;
+  background: var(--nav); backdrop-filter: blur(24px);
+  max-height: 0; overflow: hidden;
+  border-bottom: 1px solid transparent;
+  transition: max-height .45s cubic-bezier(.16,1,.3,1), padding .4s, border-color .3s;
+}
+.mdr.on { max-height: 420px; padding: 1.4rem 6%; border-color: var(--bdr); }
+.mdr a {
+  display: block; padding: .85rem 0;
+  font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--txt2); border-bottom: 1px solid var(--bdr);
+  transition: color .3s, padding-left .3s; cursor: pointer;
+}
+.mdr a:last-child { border: none; }
+.mdr a:hover { color: var(--gold); padding-left: .5rem; }
+
+@media(max-width:860px){ .nlinks, .ncta { display: none; } .hbg { display: flex; } }
+@media(max-width:500px){ .tpill button { padding: 5px 9px; font-size: .57rem; } }
+
+/* ════════════════════════════════════════
+   SECTION TABS
+════════════════════════════════════════ */
+.stabs {
+  position: sticky; top: 64px; z-index: 150;
+  background: var(--bg2); border-bottom: 1px solid var(--bdr);
+  display: flex; overflow-x: auto; scrollbar-width: none;
+}
+.stabs::-webkit-scrollbar { display: none; }
+.stab {
+  flex-shrink: 0; padding: 13px 20px;
+  font-size: .58rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--txt3); border: none; background: transparent; cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color .3s, border-color .3s, background .3s; white-space: nowrap;
+}
+.stab:hover { color: var(--txt2); background: var(--glass); }
+.stab.on { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ════════════════════════════════════════
+   PAGE VISIBILITY
+════════════════════════════════════════ */
+.page { display: none; }
+.page.show { display: block; }
+
+/* ════════════════════════════════════════
+   SHARED COMPONENTS
+════════════════════════════════════════ */
+.wrap { padding: clamp(3rem,6vw,6rem) clamp(1.5rem,5vw,5.5rem); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .7rem;
+  font-size: .59rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); font-weight: 400; margin-bottom: .8rem;
+}
+.eyebrow::after { content: ''; width: 22px; height: 1px; background: var(--gold); }
+
+.stitle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.9rem,3.2vw,3.2rem);
+  font-weight: 300; color: var(--txt); line-height: 1.15;
+}
+.stitle em { font-style: italic; color: var(--gold); }
+
+.sdesc {
+  font-size: .86rem; line-height: 1.9;
+  color: var(--txt2); max-width: 540px;
+  margin-top: .9rem; letter-spacing: .02em;
+}
+
+.rule { width: 38px; height: 1px; background: var(--gold); margin: 1.3rem 0; box-shadow: 0 0 8px var(--glow); }
+
+.ctr { text-align: center; }
+.ctr .eyebrow { justify-content: center; }
+.ctr .eyebrow::after { display: none; }
+.ctr .rule { margin: 1.3rem auto; }
+.ctr .sdesc { margin: .9rem auto 0; }
+
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+.hero {
+  min-height: calc(100vh - 104px);
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: var(--bg); position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 75% at 8% 65%, rgba(212,175,55,.065) 0%, transparent 55%),
+    radial-gradient(ellipse 38% 50% at 90% 18%, rgba(212,175,55,.04) 0%, transparent 55%);
+}
+
+.hl {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 4rem clamp(2rem,5vw,5.5rem); position: relative; z-index: 2;
+}
+.hl::after {
+  content: ''; position: absolute; right: 0; top: 12%; bottom: 12%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  animation: glowline 3.5s ease-in-out infinite alternate;
+}
+@keyframes glowline { from { opacity: .2; } to { opacity: 1; box-shadow: 0 0 10px var(--glow); } }
+
+.htag {
+  display: inline-flex; align-items: center; gap: .8rem;
+  font-size: .55rem; letter-spacing: .36em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2rem; font-weight: 400;
+  animation: fadeUp .9s cubic-bezier(.16,1,.3,1) both;
+}
+.htag::before, .htag::after { content: ''; width: 26px; height: 1px; background: var(--gold); }
+
+.htitle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.9rem,4.8vw,5.8rem);
+  font-weight: 300; line-height: 1.05; color: var(--txt); margin-bottom: 1.8rem;
+  animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .12s both;
+}
+.htitle em {
+  font-style: italic; color: var(--gold);
+  position: relative; display: inline-block;
+}
+.htitle em::after {
+  content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+  height: 1px; background: linear-gradient(to right, var(--gold), transparent);
+}
+
+.hsub {
+  font-size: .9rem; line-height: 1.9; color: var(--txt2);
+  max-width: 420px; margin-bottom: 2.5rem; letter-spacing: .025em;
+  animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .22s both;
+}
+
+.hbtns {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .32s both;
+}
+
+.btn-primary {
+  padding: 13px 32px; background: var(--gold); color: #000;
+  font-size: .66rem; letter-spacing: .22em; text-transform: uppercase;
+  font-weight: 500; border: none; cursor: pointer;
+  transition: var(--tr); position: relative; overflow: hidden;
+}
+.btn-primary::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,.12); transform: scaleX(0);
+  transform-origin: right; transition: transform var(--tr);
+}
+.btn-primary:hover::after { transform: scaleX(1); transform-origin: left; }
+.btn-primary:hover { box-shadow: 0 8px 32px var(--glow); }
+
+.btn-secondary {
+  padding: 13px 32px; background: transparent; color: var(--txt2);
+  font-size: .66rem; letter-spacing: .22em; text-transform: uppercase;
+  font-weight: 300; border: 1px solid var(--bdr); cursor: pointer; transition: var(--tr);
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+.hstats {
+  display: flex; gap: 2.5rem; margin-top: 3rem;
+  padding-top: 2.5rem; border-top: 1px solid var(--bdr);
+  animation: fadeUp .9s cubic-bezier(.16,1,.3,1) .42s both;
+}
+.hsnum {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.3rem; font-weight: 300; color: var(--gold);
+  line-height: 1; text-shadow: 0 0 24px var(--glow);
+}
+.hslbl { font-size: .53rem; letter-spacing: .18em; text-transform: uppercase; color: var(--txt3); margin-top: .3rem; }
+
+.hr { position: relative; overflow: hidden; background: var(--bg3); }
+.hr img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top center;
+  filter: brightness(.88) contrast(1.06) saturate(.88);
+  transition: transform 8s ease;
+}
+.hr:hover img { transform: scale(1.03); }
+.hr-ov {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    linear-gradient(to right, var(--bg) 0%, transparent 22%),
+    linear-gradient(to top, var(--bg) 0%, transparent 18%);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ════════════════════════════════════════
+   MARQUEE
+════════════════════════════════════════ */
+.mq { background: var(--gold); overflow: hidden; padding: .7rem 0; }
+.mqt { display: flex; width: max-content; animation: mq 22s linear infinite; }
+.mqt:hover { animation-play-state: paused; }
+.mqi {
+  font-size: .54rem; letter-spacing: .28em; text-transform: uppercase;
+  color: #000; padding: 0 2.4rem; white-space: nowrap;
+  display: flex; align-items: center; gap: 2rem;
+}
+.mqi::after { content: '✦'; font-size: .42rem; }
+@keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ════════════════════════════════════════
+   SERVICES
+════════════════════════════════════════ */
+.svc-bg { background: var(--bg2); }
+.svc-grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 1px; background: var(--bdr); border: 1px solid var(--bdr); margin-top: 3rem;
+}
+.svc-card {
+  background: var(--bg2); padding: 3rem 2.8rem;
+  position: relative; overflow: hidden; transition: transform .4s;
+}
+.svc-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(212,175,55,.08) 0%, transparent 55%);
+  opacity: 0; transition: opacity .4s;
+}
+.svc-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .5s cubic-bezier(.16,1,.3,1);
+}
+.svc-card:hover::before { opacity: 1; }
+.svc-card:hover::after { transform: scaleX(1); }
+.svc-card:hover { transform: translateY(-4px); }
+
+.svc-n {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 4.8rem; font-weight: 300; line-height: 1; margin-bottom: 1.4rem;
+  color: transparent; -webkit-text-stroke: 1px var(--bdr);
+  transition: -webkit-text-stroke-color .4s;
+}
+.svc-card:hover .svc-n { -webkit-text-stroke-color: var(--bdr2); }
+.svc-t {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem; font-weight: 400; color: var(--txt); margin-bottom: .35rem;
+}
+.svc-tag {
+  font-size: .55rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem; opacity: .8;
+}
+.svc-d { font-size: .85rem; line-height: 1.88; color: var(--txt2); }
+.svc-lnk {
+  display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.6rem;
+  font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--gold); transition: gap .25s; cursor: pointer;
+}
+.svc-lnk:hover { gap: 1rem; }
+
+/* ════════════════════════════════════════
+   PROCESS
+════════════════════════════════════════ */
+.proc-bg { background: var(--bg3); }
+.proc-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 2rem; margin-top: 3.5rem; position: relative;
+}
+.proc-grid::before {
+  content: ''; position: absolute; top: 24px; left: 12.5%; right: 12.5%;
+  height: 1px; background: linear-gradient(to right, transparent, var(--bdr), var(--bdr), transparent);
+}
+.proc-step { text-align: center; position: relative; }
+.proc-dot {
+  width: 50px; height: 50px; border-radius: 50%;
+  border: 1px solid var(--bdr2);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.4rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem; color: var(--gold); background: var(--bg3);
+  transition: var(--tr);
+}
+.proc-step:hover .proc-dot { background: var(--gold); color: #000; box-shadow: 0 0 20px var(--glow); }
+.proc-t { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.12rem; color: var(--txt); font-weight: 400; margin-bottom: .5rem; }
+.proc-d { font-size: .78rem; line-height: 1.8; color: var(--txt2); }
+
+/* ════════════════════════════════════════
+   GALLERY
+════════════════════════════════════════ */
+.gal-bg { background: var(--bg); }
+.gal { columns: 3; column-gap: 12px; margin-top: 2.5rem; }
+.gi { break-inside: avoid; margin-bottom: 12px; position: relative; overflow: hidden; background: var(--bg3); }
+.gi img {
+  width: 100%; display: block;
+  filter: brightness(.86) saturate(.82);
+  transition: transform .65s cubic-bezier(.16,1,.3,1), filter .5s;
+}
+.gi:hover img { transform: scale(1.08); filter: brightness(.97) saturate(1.05); }
+.gi-ov {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,7,9,.82) 0%, transparent 52%);
+  opacity: 0; transition: opacity .4s;
+  display: flex; align-items: flex-end; padding: 1.2rem;
+}
+.gi:hover .gi-ov { opacity: 1; }
+.gi-lbl { font-size: .57rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.92); }
+.gph {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .5rem; border: 1px dashed var(--bdr); min-height: 160px;
+}
+.gph-i { font-size: 1.4rem; opacity: .2; }
+.gph-t { font-size: .54rem; letter-spacing: .18em; text-transform: uppercase; color: var(--txt3); }
+
+/* ════════════════════════════════════════
+   BEFORE / AFTER
+════════════════════════════════════════ */
+.ba-bg { background: var(--bg2); }
+.ba-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 2.5rem; }
+.ba-pair { display: flex; position: relative; overflow: hidden; margin-bottom: .9rem; }
+.ba-side { flex: 1; overflow: hidden; }
+.ba-side img, .ba-side .gph { width: 100%; height: 210px; }
+.ba-side img { object-fit: cover; transition: transform .5s; }
+.ba-pair:hover .ba-side img { transform: scale(1.04); }
+.bat { position: absolute; bottom: .7rem; font-size: .5rem; letter-spacing: .18em; text-transform: uppercase; padding: 3px 8px; z-index: 2; }
+.bat.b { left: .7rem; background: var(--txt); color: var(--bg); }
+.bat.a { right: .7rem; background: var(--gold); color: #000; }
+.ba-t { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; font-weight: 400; color: var(--txt); }
+.ba-s { font-size: .62rem; color: var(--txt3); letter-spacing: .08em; margin-top: .2rem; }
+
+/* ════════════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════════════ */
+.testi-bg { background: var(--bg3); position: relative; overflow: hidden; }
+.testi-bg::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(212,175,55,.06) 0%, transparent 65%);
+}
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+.testi-card {
+  background: var(--glass); border: 1px solid var(--bdr);
+  padding: 2.2rem 2rem; position: relative; transition: border-color .3s, transform .4s;
+}
+.testi-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent);
+  transform: scaleX(0); transition: transform .5s cubic-bezier(.16,1,.3,1);
+}
+.testi-card:hover::before { transform: scaleX(1); }
+.testi-card:hover { border-color: var(--bdr2); transform: translateY(-4px); }
+.testi-q {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.08rem; font-style: italic; font-weight: 300;
+  color: var(--txt2); line-height: 1.65; margin-bottom: 1.4rem;
+}
+.testi-q::before { content: '❝'; color: var(--gold); margin-right: .3rem; font-size: .9rem; }
+.testi-name { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--txt3); }
+.testi-stars { color: var(--gold); font-size: .7rem; margin-bottom: .6rem; letter-spacing: .1em; }
+
+/* ════════════════════════════════════════
+   AWARDS
+════════════════════════════════════════ */
+.aw-bg { background: var(--bg); position: relative; overflow: hidden; }
+.aw-bg::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 55% 60% at 50% 50%, rgba(212,175,55,.07) 0%, transparent 70%);
+}
+.aw-lay { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4.5rem; align-items: start; margin-top: 3rem; }
+.aw-badges { display: flex; flex-direction: column; gap: 1.2rem; }
+.aw-badge {
+  display: flex; align-items: center; gap: 1.3rem;
+  padding: 1.4rem 1.6rem; border: 1px solid var(--bdr);
+  background: var(--glass); transition: border-color .3s, transform .3s; position: relative; overflow: hidden;
+}
+.aw-badge::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--gold); transform: scaleY(0); transform-origin: bottom;
+  transition: transform .4s cubic-bezier(.16,1,.3,1);
+}
+.aw-badge:hover::before { transform: scaleY(1); }
+.aw-badge:hover { border-color: var(--bdr2); transform: translateX(4px); }
+.aw-ico {
+  width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+}
+.aw-bt { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; color: var(--txt); font-weight: 400; }
+.aw-bs { font-size: .56rem; letter-spacing: .14em; text-transform: uppercase; color: var(--txt3); margin-top: .2rem; }
+.aw-qt { margin-top: .5rem; padding: 1.8rem 1.8rem 1.8rem 1.6rem; border-left: 2px solid var(--gold); background: var(--glass); }
+.aw-q { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.12rem; font-style: italic; font-weight: 300; color: var(--txt2); line-height: 1.65; margin-bottom: .8rem; }
+.aw-qa { font-size: .56rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.aw-right { display: flex; flex-direction: column; gap: 2.8rem; }
+.fl-ttl { font-size: .57rem; letter-spacing: .28em; text-transform: uppercase; color: var(--txt3); margin-bottom: 1.2rem; }
+.flags { display: flex; gap: 1rem; flex-wrap: wrap; }
+.flag-it { display: flex; flex-direction: column; align-items: center; gap: .4rem; }
+.flag-c {
+  width: 54px; height: 54px; border-radius: 50%; font-size: 1.75rem;
+  border: 1px solid var(--bdr); display: flex; align-items: center; justify-content: center;
+  background: var(--glass); transition: var(--tr);
+}
+.flag-c:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 8px 20px var(--glow); }
+.flag-nm { font-size: .51rem; letter-spacing: .12em; text-transform: uppercase; color: var(--txt3); }
+.certs { display: flex; flex-direction: column; gap: 1rem; }
+.cert { display: flex; gap: .9rem; align-items: center; }
+.cert-bar { width: 2px; height: 34px; flex-shrink: 0; background: linear-gradient(to bottom, var(--gold), transparent); }
+.cert-t { font-size: .83rem; color: var(--txt2); }
+.cert-s { font-size: .55rem; letter-spacing: .12em; text-transform: uppercase; color: var(--txt3); }
+
+/* ════════════════════════════════════════
+   ABOUT / STUDIO
+════════════════════════════════════════ */
+.ab-bg { background: var(--bg2); }
+.ab-lay { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5.5rem; align-items: center; }
+.ab-img-w { position: relative; padding-bottom: 1.5rem; }
+.ab-img { width: 100%; aspect-ratio: .76; object-fit: cover; object-position: top; filter: contrast(1.05) brightness(.9) saturate(.86); }
+.ab-fr { position: absolute; bottom: -14px; right: -16px; width: 72%; height: 68%; border: 1px solid var(--gold); z-index: -1; }
+.ab-badge {
+  position: absolute; top: 2rem; right: -1.8rem;
+  width: 88px; height: 88px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 8px rgba(212,175,55,.1), 0 8px 28px var(--glow);
+  animation: bdgpulse 3.5s ease-in-out infinite;
+}
+@keyframes bdgpulse {
+  0%,100% { box-shadow: 0 0 0 8px rgba(212,175,55,.1), 0 8px 28px var(--glow); }
+  50%      { box-shadow: 0 0 0 16px rgba(212,175,55,.04), 0 8px 28px var(--glow); }
+}
+.ab-bn { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.75rem; font-weight: 300; color: #000; line-height: 1; }
+.ab-bl { font-size: .41rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(0,0,0,.6); text-align: center; }
+.ab-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.38rem; font-style: italic; font-weight: 300; color: var(--gold); line-height: 1.5; margin-bottom: 1.3rem; }
+.ab-p { font-size: .86rem; line-height: 1.88; color: var(--txt2); margin-bottom: .9rem; }
+.ab-sig { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.95rem; font-style: italic; margin-top: 1.2rem; background: linear-gradient(to right, var(--txt3), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* Skill bars (horizontal accent marks) */
+.ab-skills { display: flex; gap: 2rem; margin-top: 1.6rem; }
+.sk { text-align: center; }
+.sk-nm { font-size: .53rem; letter-spacing: .14em; text-transform: uppercase; color: var(--txt3); }
+.sk-bar { width: 54px; height: 1px; background: var(--bdr); margin: .5rem auto 0; position: relative; overflow: hidden; }
+.sk-fill { position: absolute; top: 0; left: 0; height: 100%; background: linear-gradient(to right, var(--gold), var(--gold2)); width: 0; transition: width 1.4s cubic-bezier(.16,1,.3,1); }
+
+/* ════════════════════════════════════════
+   CONTACT
+════════════════════════════════════════ */
+.ct-bg { background: var(--bg3); }
+.ct-lay { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5.5rem; align-items: start; }
+.ct-info { display: flex; flex-direction: column; gap: 1.8rem; margin-top: 2rem; }
+.ct-it { display: flex; align-items: flex-start; gap: 1.2rem; }
+.ct-ico { width: 42px; height: 42px; border: 1px solid var(--bdr); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: .95rem; transition: var(--tr); }
+.ct-it:hover .ct-ico { background: var(--gold); border-color: var(--gold); color: #000; }
+.ct-lbl { font-size: .53rem; letter-spacing: .18em; text-transform: uppercase; color: var(--txt3); margin-bottom: .2rem; }
+.ct-val { font-size: .88rem; color: var(--txt); font-weight: 300; }
+
+.fform { display: flex; flex-direction: column; gap: 1.1rem; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.fg { display: flex; flex-direction: column; gap: .4rem; }
+.fl { font-size: .54rem; letter-spacing: .18em; text-transform: uppercase; color: var(--txt3); }
+.fi, .fs, .fta {
+  background: var(--glass); border: 1px solid var(--bdr);
+  padding: 12px 15px; color: var(--txt);
+  font-family: 'Jost', sans-serif; font-size: .85rem; font-weight: 300;
+  transition: border-color .3s; outline: none; width: 100%;
+}
+.fi:focus, .fs:focus, .fta:focus { border-color: var(--gold); }
+.fi::placeholder, .fta::placeholder { color: var(--txt3); }
+.fs {
+  appearance: none; -webkit-appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23D4AF37' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
+}
+.fs option { background: var(--bg2); color: var(--txt); }
+.fta { resize: none; min-height: 100px; }
+.fbtn {
+  padding: 15px; background: var(--gold); border: none; color: #000;
+  font-family: 'Jost', sans-serif; font-size: .68rem; letter-spacing: .24em;
+  text-transform: uppercase; font-weight: 500; cursor: pointer; transition: var(--tr);
+}
+.fbtn:hover { background: var(--gold2); box-shadow: 0 8px 28px var(--glow); }
+.fnote { font-size: .59rem; color: var(--txt3); line-height: 1.6; }
+#fok { display: none; padding: 1.2rem; border: 1px solid var(--bdr2); background: rgba(212,175,55,.06); text-align: center; font-size: .78rem; color: var(--gold); letter-spacing: .05em; }
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+footer {
+  background: var(--bg); border-top: 1px solid var(--bdr);
+  padding: clamp(2.5rem,4vw,4.5rem) clamp(1.5rem,5vw,5.5rem) 1.8rem;
+}
+.ft-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--bdr); margin-bottom: 1.8rem; }
+.ft-logo { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.4rem; font-weight: 300; color: var(--txt); margin-bottom: .7rem; }
+.ft-logo span { color: var(--gold); font-style: italic; }
+.ft-desc { font-size: .72rem; line-height: 1.82; color: var(--txt3); max-width: 240px; }
+.ft-soc { display: flex; gap: .7rem; margin-top: 1.3rem; }
+.fts { width: 34px; height: 34px; border: 1px solid var(--bdr); display: flex; align-items: center; justify-content: center; color: var(--txt3); font-size: .78rem; transition: var(--tr); }
+.fts:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+.ft-ct { font-size: .57rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; opacity: .8; }
+.ft-ul { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+.ft-ul a { font-size: .72rem; color: var(--txt3); transition: color .3s, padding-left .25s; cursor: pointer; display: inline-block; }
+.ft-ul a:hover { color: var(--gold); padding-left: .4rem; }
+.ft-bot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.ft-cp { font-size: .59rem; color: var(--txt3); opacity: .5; }
+.ft-tg { font-family: 'Cormorant Garamond', Georgia, serif; font-size: .84rem; font-style: italic; color: var(--txt3); opacity: .5; }
+
+/* ════════════════════════════════════════
+   FLOATING BUTTONS
+════════════════════════════════════════ */
+.flt { position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 180; display: flex; flex-direction: column; gap: .7rem; }
+.fltbtn {
+  width: 50px; height: 50px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; border: none; cursor: pointer; transition: var(--tr);
+}
+.flt-wa { background: #25D366; color: #fff; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,.25); }
+.flt-wa:hover { transform: scale(1.12); box-shadow: 0 6px 28px rgba(37,211,102,.35); }
+.flt-top { background: var(--gold); color: #000; opacity: 0; pointer-events: none; }
+.flt-top.on { opacity: 1; pointer-events: auto; }
+.flt-top:hover { transform: translateY(-3px); }
+
+/* ════════════════════════════════════════
+   MOBILE RESPONSIVE
+════════════════════════════════════════ */
+@media(max-width:900px) {
+  .svc-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .aw-lay { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media(max-width:768px) {
+  .stab { padding: 10px 13px; font-size: .53rem; letter-spacing: .13em; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hl { padding: 2rem 5% 2rem; order: 2; }
+  .hl::after { display: none; }
+  .htag { font-size: .5rem; margin-bottom: 1.2rem; }
+  .htitle { font-size: clamp(2.2rem,8vw,2.9rem); margin-bottom: 1.2rem; }
+  .hsub { font-size: .82rem; margin-bottom: 1.6rem; max-width: 100%; }
+  .hbtns { gap: .7rem; }
+  .btn-primary, .btn-secondary { padding: 11px 22px; font-size: .62rem; }
+  .hstats { gap: 1.8rem; margin-top: 2rem; padding-top: 1.8rem; }
+  .hsnum { font-size: 1.95rem; }
+  .hr { height: 55vw; min-height: 210px; order: 1; }
+  .hr-ov { background: linear-gradient(to bottom, var(--bg) 0%, transparent 38%); }
+  .wrap { padding: 2.5rem 5%; }
+  .svc-card { padding: 2rem 1.8rem; }
+  .svc-n { font-size: 3.8rem; }
+  .proc-grid { grid-template-columns: repeat(2,1fr); }
+  .proc-grid::before { display: none; }
+  .gal { columns: 2; column-gap: 8px; margin-top: 2rem; }
+  .gi { margin-bottom: 8px; }
+  .ba-grid { grid-template-columns: 1fr; }
+  .ba-side img, .ba-side .gph { height: 155px; }
+  .ab-lay { grid-template-columns: 1fr; gap: 2.5rem; }
+  .ab-fr { display: none; }
+  .ab-badge { right: 1rem; top: 1rem; width: 72px; height: 72px; }
+  .ab-bn { font-size: 1.45rem; }
+  .ab-img { aspect-ratio: 4/3; }
+  .ct-lay { grid-template-columns: 1fr; gap: 2.5rem; }
+  .frow { grid-template-columns: 1fr; }
+  .ft-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .ft-bot { flex-direction: column; text-align: center; }
+}
+@media(max-width:480px) {
+  .ft-grid { grid-template-columns: 1fr; }
+  .gal { columns: 1; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .ab-skills { flex-wrap: wrap; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="mainNav" role="banner">
+  <div class="logo">Rahimova <b>PMU</b></div>
+  <ul class="nlinks" role="navigation" aria-label="Menu principale">
+    <li><a onclick="go('home')" role="button">Home</a></li>
+    <li><a onclick="go('servizi')" role="button">Servizi</a></li>
+    <li><a onclick="go('portfolio')" role="button">Portfolio</a></li>
+    <li><a onclick="go('awards')" role="button">Awards</a></li>
+    <li><a onclick="go('studio')" role="button">Studio</a></li>
+    <li><a onclick="go('contatti')" role="button">Contatti</a></li>
+  </ul>
+  <div class="tpill" role="group" aria-label="Tema">
+    <button id="btnL" onclick="setTheme('light')" aria-label="Tema chiaro">☀️ Chiara</button>
+    <button id="btnD" class="on" onclick="setTheme('dark')" aria-label="Tema scuro">🌙 Scura</button>
+  </div>
+  <button class="ncta" onclick="go('contatti')"><span>Prenota</span></button>
+  <button class="hbg" id="hbg" aria-label="Apri menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══ MOBILE DRAWER ═══ -->
+<nav class="mdr" id="mdr" aria-label="Menu mobile">
+  <a onclick="go('home');closeMob()">Home</a>
+  <a onclick="go('servizi');closeMob()">Servizi</a>
+  <a onclick="go('metodo');closeMob()">Il Metodo</a>
+  <a onclick="go('portfolio');closeMob()">Portfolio</a>
+  <a onclick="go('ba');closeMob()">Prima &amp; Dopo</a>
+  <a onclick="go('awards');closeMob()">Awards</a>
+  <a onclick="go('studio');closeMob()">Studio</a>
+  <a onclick="go('contatti');closeMob()">Prenota ora →</a>
+</nav>
+
+<!-- ═══ SECTION TABS ═══ -->
+<div class="stabs" id="stabs" role="tablist" aria-label="Sezioni">
+  <button class="stab on" data-p="home"      onclick="go('home')"      role="tab" aria-selected="true">Home</button>
+  <button class="stab"    data-p="servizi"   onclick="go('servizi')"   role="tab" aria-selected="false">Servizi</button>
+  <button class="stab"    data-p="metodo"    onclick="go('metodo')"    role="tab" aria-selected="false">Il Metodo</button>
+  <button class="stab"    data-p="portfolio" onclick="go('portfolio')" role="tab" aria-selected="false">Portfolio</button>
+  <button class="stab"    data-p="ba"        onclick="go('ba')"        role="tab" aria-selected="false">Prima &amp; Dopo</button>
+  <button class="stab"    data-p="awards"    onclick="go('awards')"    role="tab" aria-selected="false">Awards</button>
+  <button class="stab"    data-p="studio"    onclick="go('studio')"    role="tab" aria-selected="false">Studio</button>
+  <button class="stab"    data-p="contatti"  onclick="go('contatti')"  role="tab" aria-selected="false">Contatti</button>
+</div>
+
+<!-- ══════════════════════════════════════
+     HOME
+══════════════════════════════════════ -->
+<main>
+<div class="page show" id="p-home">
+
+  <section class="hero" aria-label="Hero">
+    <div class="hl">
+      <div class="htag">Luxury · PMU · Torino</div>
+      <h1 class="htitle">L'arte della<br><em>bellezza</em><br>permanente</h1>
+      <p class="hsub">Ogni tratto è una firma. Ogni sfumatura, una storia. Nel nostro atelier, la bellezza è la tua identità.</p>
+      <div class="hbtns">
+        <button class="btn-primary" onclick="go('contatti')">Richiedi Consulenza</button>
+        <button class="btn-secondary" onclick="go('portfolio')">Scopri i Lavori</button>
+      </div>
+      <div class="hstats">
+        <div><div class="hsnum">500+</div><div class="hslbl">Clienti Felici</div></div>
+        <div><div class="hsnum">8+</div><div class="hslbl">Anni d'Arte</div></div>
+        <div><div class="hsnum">4</div><div class="hslbl">Paesi Premiati</div></div>
+      </div>
+    </div>
+    <div class="hr">
+      <img src="rahimova.jpg" alt="Rahimova – Artista PMU" onerror="this.style.display='none'">
+      <div class="hr-ov"></div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="mq" aria-hidden="true">
+    <div class="mqt">
+      <div class="mqi">Extension Ciglia</div><div class="mqi">Brows Permanente</div>
+      <div class="mqi">Labbra PMU</div><div class="mqi">Laminazione Cheratina</div>
+      <div class="mqi">Vincitrice Internazionale</div><div class="mqi">Torino · Milano · Europa</div>
+      <div class="mqi">Extension Ciglia</div><div class="mqi">Brows Permanente</div>
+      <div class="mqi">Labbra PMU</div><div class="mqi">Laminazione Cheratina</div>
+      <div class="mqi">Vincitrice Internazionale</div><div class="mqi">Torino · Milano · Europa</div>
+    </div>
+  </div>
+
+  <!-- Footer (inside home page) -->
+  <footer>
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo">Rahimova <span>PMU</span></div>
+        <p class="ft-desc">Studio d'eccellenza per il trucco permanente e l'arte delle ciglia. Bellezza su misura, per sempre.</p>
+        <div class="ft-soc">
+          <a href="#" class="fts" aria-label="Instagram">📷</a>
+          <a href="#" class="fts" aria-label="YouTube">▶</a>
+          <a href="https://wa.me/39333000000" class="fts" aria-label="WhatsApp">💬</a>
+          <a href="#" class="fts" aria-label="Facebook">f</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-ct">Trattamenti</div>
+        <ul class="ft-ul">
+          <li><a onclick="go('servizi')">Extension Ciglia</a></li>
+          <li><a onclick="go('servizi')">Brows PMU</a></li>
+          <li><a onclick="go('servizi')">Labbra PMU</a></li>
+          <li><a onclick="go('servizi')">Laminazione</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ct">Studio</div>
+        <ul class="ft-ul">
+          <li><a onclick="go('studio')">Chi siamo</a></li>
+          <li><a onclick="go('awards')">Awards</a></li>
+          <li><a onclick="go('portfolio')">Portfolio</a></li>
+          <li><a onclick="go('metodo')">Il Metodo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ct">Contatti</div>
+        <ul class="ft-ul">
+          <li><a onclick="go('contatti')">Prenota</a></li>
+          <li><a href="tel:+39333000000">+39 333 000 0000</a></li>
+          <li><a href="mailto:info@rahimovapmu.it">info@rahimovapmu.it</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p class="ft-cp">© 2026 Rahimova Permanent Make Up. Tutti i diritti riservati.</p>
+      <p class="ft-tg">"La bellezza è un'arte. Noi siamo artisti."</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     SERVIZI
+══════════════════════════════════════ -->
+<div class="page" id="p-servizi">
+  <section class="svc-bg wrap">
+    <div class="eyebrow reveal">I Nostri Trattamenti</div>
+    <h2 class="stitle reveal reveal-d1">Arte applicata alla <em>tua bellezza</em></h2>
+    <div class="rule reveal reveal-d2"></div>
+    <p class="sdesc reveal reveal-d2">Ogni trattamento è un'opera su misura. Studiamo la morfologia del viso per un risultato armonioso e duraturo.</p>
+    <div class="svc-grid">
+      <article class="svc-card reveal reveal-d1">
+        <div class="svc-n">01</div>
+        <h3 class="svc-t">Extension Ciglia</h3>
+        <div class="svc-tag">Volume · Densità · Curvatura</div>
+        <p class="svc-d">Architetture dello sguardo su misura. Progettiamo set personalizzati per densità e curvatura, utilizzando fibre anallergiche di seta per un effetto che incanta ad ogni battito di ciglia.</p>
+        <a class="svc-lnk" onclick="go('contatti')">Prenota →</a>
+      </article>
+      <article class="svc-card reveal reveal-d2">
+        <div class="svc-n">02</div>
+        <h3 class="svc-t">Brows Trucco Permanente</h3>
+        <div class="svc-tag">Microblading · Shading · Ombre</div>
+        <p class="svc-d">L'arte del realismo. Attraverso lo studio della morfologia del viso, ricreiamo l'arcata sopraccigliare con tecniche di sfumatura e pixel per un risultato armonioso che incornicia lo sguardo.</p>
+        <a class="svc-lnk" onclick="go('contatti')">Prenota →</a>
+      </article>
+      <article class="svc-card reveal reveal-d3">
+        <div class="svc-n">03</div>
+        <h3 class="svc-t">Labbra Trucco Permanente</h3>
+        <div class="svc-tag">Acquarello · Contour · Gloss Effect</div>
+        <p class="svc-d">Ridefinizione e turgore cromatico. Un velo di colore che corregge le asimmetrie e restituisce vitalità alle labbra, donando un effetto gloss naturale che persiste giorno e notte.</p>
+        <a class="svc-lnk" onclick="go('contatti')">Prenota →</a>
+      </article>
+      <article class="svc-card reveal reveal-d4">
+        <div class="svc-n">04</div>
+        <h3 class="svc-t">Laminazione Ciglia</h3>
+        <div class="svc-tag">Cheratina · Lifting · Natural Look</div>
+        <p class="svc-d">Il lusso della semplicità. Trattamento curativo alla cheratina che solleva e ispessisce le ciglia naturali. Effetto naturale e luminoso. Zero tatuaggio, massimo risultato.</p>
+        <a class="svc-lnk" onclick="go('contatti')">Prenota →</a>
+      </article>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════
+     METODO
+══════════════════════════════════════ -->
+<div class="page" id="p-metodo">
+  <section class="proc-bg wrap ctr">
+    <div class="eyebrow reveal" style="justify-content:center">Il Percorso</div>
+    <h2 class="stitle reveal reveal-d1">Come lavoriamo <em>per te</em></h2>
+    <div class="rule reveal reveal-d2" style="margin:1.3rem auto"></div>
+    <div class="proc-grid">
+      <div class="proc-step reveal reveal-d1">
+        <div class="proc-dot">01</div>
+        <h3 class="proc-t">Consulenza Gratuita</h3>
+        <p class="proc-d">Ascoltiamo le aspettative e analizziamo la morfologia del viso per progettare il trattamento ideale.</p>
+      </div>
+      <div class="proc-step reveal reveal-d2">
+        <div class="proc-dot">02</div>
+        <h3 class="proc-t">Progettazione</h3>
+        <p class="proc-d">Disegniamo il design e la palette cromatica perfetta per il tuo incarnato e le tue caratteristiche.</p>
+      </div>
+      <div class="proc-step reveal reveal-d3">
+        <div class="proc-dot">03</div>
+        <h3 class="proc-t">Trattamento</h3>
+        <p class="proc-d">Eseguiamo il trattamento con le migliori tecniche internazionali in ambiente sterilizzato.</p>
+      </div>
+      <div class="proc-step reveal reveal-d4">
+        <div class="proc-dot">04</div>
+        <h3 class="proc-t">Follow-up</h3>
+        <p class="proc-d">Ti accompagniamo con cura post-trattamento e ritocco di perfezionamento incluso nel prezzo.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════
+     PORTFOLIO
+══════════════════════════════════════ -->
+<div class="page" id="p-portfolio">
+  <section class="gal-bg wrap">
+    <div class="eyebrow reveal">Portfolio</div>
+    <h2 class="stitle reveal reveal-d1">Ogni lavoro, un'opera <em>unica</em></h2>
+    <div class="rule reveal reveal-d2"></div>
+    <p class="sdesc reveal reveal-d2">Una selezione dei nostri lavori più significativi. Ogni immagine racconta una trasformazione.</p>
+    <div class="gal">
+      <div class="gi reveal">
+        <img src="gallery-brows.jpg" alt="Brows Permanente" onerror="this.closest('.gi').innerHTML='<div class=\'gph\' style=\'aspect-ratio:1\'><div class=\'gph-i\'>◇</div><div class=\'gph-t\'>Brows PMU</div></div>'">
+        <div class="gi-ov"><span class="gi-lbl">Brows Permanente</span></div>
+      </div>
+      <div class="gi reveal reveal-d1">
+        <img src="gallery-labbra.jpg" alt="Labbra Permanente" onerror="this.closest('.gi').innerHTML='<div class=\'gph\' style=\'aspect-ratio:1\'><div class=\'gph-i\'>◈</div><div class=\'gph-t\'>Labbra PMU</div></div>'">
+        <div class="gi-ov"><span class="gi-lbl">Labbra Permanente</span></div>
+      </div>
+      <div class="gi gph reveal reveal-d2" style="aspect-ratio:3/4"><div class="gph-i">✦</div><div class="gph-t">Extension Ciglia</div></div>
+      <div class="gi gph reveal reveal-d1" style="aspect-ratio:1/1"><div class="gph-i">◇</div><div class="gph-t">Brows Ombre</div></div>
+      <div class="gi gph reveal reveal-d2" style="aspect-ratio:3/5"><div class="gph-i">❋</div><div class="gph-t">Laminazione</div></div>
+      <div class="gi gph reveal" style="aspect-ratio:4/3"><div class="gph-i">◈</div><div class="gph-t">Labbra Acquarello</div></div>
+      <div class="gi gph reveal reveal-d1" style="aspect-ratio:1/1"><div class="gph-i">✦</div><div class="gph-t">Volume Ciglia</div></div>
+      <div class="gi gph reveal reveal-d2" style="aspect-ratio:3/4"><div class="gph-i">◇</div><div class="gph-t">Microblading</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════
+     PRIMA & DOPO
+══════════════════════════════════════ -->
+<div class="page" id="p-ba">
+  <section class="ba-bg wrap">
+    <div class="eyebrow reveal">Trasformazioni</div>
+    <h2 class="stitle reveal reveal-d1">Prima <em>&amp;</em> Dopo</h2>
+    <div class="rule reveal reveal-d2"></div>
+    <p class="sdesc reveal reveal-d2">Le trasformazioni parlano da sole. Ogni risultato è frutto di studio, tecnica e cura artigianale.</p>
+    <div class="ba-grid">
+      <div class="reveal reveal-d1">
+        <div class="ba-pair">
+          <div class="ba-side"><div class="gph" style="height:210px"><div class="gph-i">◇</div><div class="gph-t">Prima</div></div></div>
+          <div class="ba-side"><div class="gph" style="height:210px;background:var(--bg3)"><div class="gph-i">◇</div><div class="gph-t">Dopo</div></div></div>
+          <span class="bat b">Prima</span><span class="bat a">Dopo</span>
+        </div>
+        <p class="ba-t">Brows Ombre Shading</p>
+        <p class="ba-s">Trucco Permanente · 2 sessioni</p>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="ba-pair">
+          <div class="ba-side"><div class="gph" style="height:210px"><div class="gph-i">◈</div><div class="gph-t">Prima</div></div></div>
+          <div class="ba-side"><img src="gallery-labbra.jpg" style="height:210px;width:100%;object-fit:cover" alt="Dopo" onerror="this.style.display='none'"></div>
+          <span class="bat b">Prima</span><span class="bat a">Dopo</span>
+        </div>
+        <p class="ba-t">Labbra Gloss Effect</p>
+        <p class="ba-s">Trucco Permanente · Effetto naturale</p>
+      </div>
+      <div class="reveal reveal-d3">
+        <div class="ba-pair">
+          <div class="ba-side"><div class="gph" style="height:210px"><div class="gph-i">✦</div><div class="gph-t">Prima</div></div></div>
+          <div class="ba-side"><div class="gph" style="height:210px;background:var(--bg3)"><div class="gph-i">✦</div><div class="gph-t">Dopo</div></div></div>
+          <span class="bat b">Prima</span><span class="bat a">Dopo</span>
+        </div>
+        <p class="ba-t">Extension Volume</p>
+        <p class="ba-s">Extension ciglia · Set completo</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════
+     AWARDS
+══════════════════════════════════════ -->
+<div class="page" id="p-awards">
+  <section class="aw-bg wrap">
+    <div class="eyebrow reveal">Riconoscimenti</div>
+    <h2 class="stitle reveal reveal-d1">The <em>Excellence</em></h2>
+    <div class="rule reveal reveal-d2"></div>
+    <p class="reveal reveal-d2" style="font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--txt3)">Vincitrice Internazionale · Brow Coloring Champion</p>
+    <div class="aw-lay">
+      <div class="aw-badges">
+        <div class="aw-badge reveal reveal-d1">
+          <div class="aw-ico">🏆</div>
+          <div><div class="aw-bt">Brow Coloring Winner</div><div class="aw-bs">Campionato Internazionale PMU · 2023</div></div>
+        </div>
+        <div class="aw-badge reveal reveal-d2">
+          <div class="aw-ico">🥇</div>
+          <div><div class="aw-bt">Best Lip PMU Artist</div><div class="aw-bs">European Beauty Awards · 2022</div></div>
+        </div>
+        <div class="aw-badge reveal reveal-d3">
+          <div class="aw-ico">⭐</div>
+          <div><div class="aw-bt">Excellence in Lash Art</div><div class="aw-bs">International Lash Conference · 2024</div></div>
+        </div>
+        <blockquote class="aw-qt reveal reveal-d4">
+          <p class="aw-q">"Un'artista dalla sensibilità rara. Il suo tratto trasforma non solo il viso, ma la percezione di sé stesse."</p>
+          <div class="aw-qa">— Giuria Internazionale PMU · Milano 2023</div>
+        </blockquote>
+      </div>
+      <div class="aw-right">
+        <div class="reveal reveal-d1">
+          <div class="fl-ttl">Presenza Internazionale</div>
+          <div class="flags">
+            <div class="flag-it"><div class="flag-c">🇮🇹</div><div class="flag-nm">Italia</div></div>
+            <div class="flag-it"><div class="flag-c">🇺🇸</div><div class="flag-nm">America</div></div>
+            <div class="flag-it"><div class="flag-c">🇺🇦</div><div class="flag-nm">Ucraina</div></div>
+            <div class="flag-it"><div class="flag-c">🇷🇺</div><div class="flag-nm">Russia</div></div>
+          </div>
+        </div>
+        <div class="reveal reveal-d2">
+          <div class="fl-ttl">Certificazioni</div>
+          <div class="certs">
+            <div class="cert"><div class="cert-bar"></div><div><div class="cert-t">Master Trainer Certificata</div><div class="cert-s">Phi Academy International</div></div></div>
+            <div class="cert"><div class="cert-bar"></div><div><div class="cert-t">Advanced Color Theory</div><div class="cert-s">New York Beauty Summit</div></div></div>
+            <div class="cert"><div class="cert-bar"></div><div><div class="cert-t">Lash Artist of the Year</div><div class="cert-s">Italia Beauty Awards</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════
+     STUDIO / CHI SIAMO
+══════════════════════════════════════ -->
+<div class="page" id="p-studio">
+  <section class="ab-bg wrap">
+    <div class="ab-lay">
+      <div class="ab-img-w reveal">
+        <img class="ab-img" src="rahimova.jpg" alt="Rahimova – Artista PMU" onerror="this.style.minHeight='380px';this.style.background='var(--bg3)';this.src=''">
+        <div class="ab-fr"></div>
+        <div class="ab-badge"><div class="ab-bn">8+</div><div class="ab-bl">anni<br>d'arte</div></div>
+      </div>
+      <div>
+        <div class="eyebrow reveal">La nostra filosofia</div>
+        <h2 class="stitle reveal reveal-d1">Chi <em>siamo</em></h2>
+        <div class="rule reveal reveal-d2"></div>
+        <p class="ab-quote reveal reveal-d2">"La bellezza non si applica. Si rivela."</p>
+        <p class="ab-p reveal reveal-d3">Rahimova PMU è uno studio di eccellenza dedicato all'arte del trucco permanente e alla cura delle ciglia. Con oltre otto anni di esperienza internazionale e riconoscimenti in quattro paesi, offriamo trattamenti su misura per ogni volto.</p>
+        <p class="ab-p reveal reveal-d4">Il nostro approccio è quello dell'artista: osserviamo, ascoltiamo e poi creiamo. Ogni intervento nasce da un dialogo profondo con la cliente.</p>
+        <div class="ab-skills" id="abSkills">
+          <div class="sk"><div class="sk-nm">Precisione</div><div class="sk-bar"><div class="sk-fill" data-w="95%"></div></div></div>
+          <div class="sk"><div class="sk-nm">Naturalezza</div><div class="sk-bar"><div class="sk-fill" data-w="92%"></div></div></div>
+          <div class="sk"><div class="sk-nm">Sicurezza</div><div class="sk-bar"><div class="sk-fill" data-w="100%"></div></div></div>
+          <div class="sk"><div class="sk-nm">Creatività</div><div class="sk-bar"><div class="sk-fill" data-w="88%"></div></div></div>
+        </div>
+        <div class="ab-sig reveal">Rahimova</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recensioni -->
+  <section class="testi-bg wrap">
+    <div class="ctr">
+      <div class="eyebrow reveal" style="justify-content:center">Recensioni</div>
+      <h2 class="stitle reveal reveal-d1">Le loro <em>parole</em></h2>
+      <div class="rule reveal reveal-d2" style="margin:1.3rem auto"></div>
+    </div>
+    <div class="testi-grid">
+      <article class="testi-card reveal reveal-d1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-q">Rahimova è semplicemente straordinaria. Le mie sopracciglia non sono mai state così perfette. Risultato naturale e duraturo, finalmente!</p>
+        <div class="testi-name">Giulia M. — Torino</div>
+      </article>
+      <article class="testi-card reveal reveal-d2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-q">Professionalità assoluta e un occhio artistico unico. Le extension ciglia sono impeccabili. Non tornerò mai da nessun'altra.</p>
+        <div class="testi-name">Sofia R. — Milano</div>
+      </article>
+      <article class="testi-card reveal reveal-d3">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-q">Ho fatto la laminazione ciglia e sono rimasta senza parole. Consulenza attenta, ambiente elegante, risultato che supera ogni aspettativa.</p>
+        <div class="testi-name">Valentina P. — Torino</div>
+      </article>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════
+     CONTATTI
+══════════════════════════════════════ -->
+<div class="page" id="p-contatti">
+  <section class="ct-bg wrap">
+    <div class="ct-lay">
+      <div>
+        <div class="eyebrow reveal">Contatti</div>
+        <h2 class="stitle reveal reveal-d1">Inizia il tuo <em>percorso</em></h2>
+        <div class="rule reveal reveal-d2"></div>
+        <p class="sdesc reveal reveal-d2">Prenota la tua consulenza gratuita. Ti risponderemo entro 24 ore.</p>
+        <address class="ct-info" style="font-style:normal">
+          <div class="ct-it reveal reveal-d1">
+            <div class="ct-ico">📍</div>
+            <div><div class="ct-lbl">Studio</div><div class="ct-val">Via della Bellezza 12, Torino</div></div>
+          </div>
+          <div class="ct-it reveal reveal-d2">
+            <div class="ct-ico">📱</div>
+            <div><div class="ct-lbl">Telefono &amp; WhatsApp</div><div class="ct-val"><a href="tel:+39333000000">+39 333 000 0000</a></div></div>
+          </div>
+          <div class="ct-it reveal reveal-d3">
+            <div class="ct-ico">✉️</div>
+            <div><div class="ct-lbl">Email</div><div class="ct-val"><a href="mailto:info@rahimovapmu.it">info@rahimovapmu.it</a></div></div>
+          </div>
+          <div class="ct-it reveal reveal-d4">
+            <div class="ct-ico">🕐</div>
+            <div><div class="ct-lbl">Orari</div><div class="ct-val">Lun–Sab · 10:00 – 19:00</div></div>
+          </div>
+        </address>
+      </div>
+      <div>
+        <form class="fform reveal reveal-d1" id="ctForm" novalidate>
+          <div class="frow">
+            <div class="fg">
+              <label class="fl" for="nome">Nome *</label>
+              <input type="text" class="fi" id="nome" name="nome" placeholder="Il tuo nome" required autocomplete="given-name">
+            </div>
+            <div class="fg">
+              <label class="fl" for="tel">Telefono *</label>
+              <input type="tel" class="fi" id="tel" name="tel" placeholder="+39 333 000 0000" required autocomplete="tel">
+            </div>
+          </div>
+          <div class="fg">
+            <label class="fl" for="email">Email *</label>
+            <input type="email" class="fi" id="email" name="email" placeholder="la.tua@email.it" required autocomplete="email">
+          </div>
+          <div class="fg">
+            <label class="fl" for="servizio">Servizio</label>
+            <select class="fs" id="servizio" name="servizio">
+              <option value="">Seleziona un trattamento</option>
+              <option>Brows Trucco Permanente</option>
+              <option>Labbra Trucco Permanente</option>
+              <option>Extension Ciglia</option>
+              <option>Laminazione Ciglia</option>
+              <option>Consulenza Generica</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label class="fl" for="msg">Messaggio</label>
+            <textarea class="fta" id="msg" name="msg" placeholder="Raccontaci le tue aspettative…"></textarea>
+          </div>
+          <button type="submit" class="fbtn"><span id="fbtnTxt">Richiedi Consulenza Gratuita →</span></button>
+          <div id="fok" role="alert">✦ Grazie! Ti contatteremo entro 24 ore per confermare.</div>
+          <p class="fnote">* I tuoi dati sono trattati nel rispetto del GDPR e non condivisi con terze parti.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<!-- ═══ FLOATING ACTIONS ═══ -->
+<div class="flt" aria-label="Azioni rapide">
+  <a href="https://wa.me/39333000000" class="fltbtn flt-wa" aria-label="Contattaci su WhatsApp" target="_blank" rel="noopener">💬</a>
+  <button class="fltbtn flt-top" id="bkTop" aria-label="Torna su">↑</button>
+</div>
+
+<script>
+/* ══════════════════════════════════
+   NAVIGATION
+══════════════════════════════════ */
+function go(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('show'));
+  var p = document.getElementById('p-' + id);
+  if (p) {
+    p.classList.add('show');
+    // Re-trigger reveals for newly shown page
+    setTimeout(() => {
+      p.querySelectorAll('.reveal').forEach(el => {
+        revObs.observe(el);
+      });
+    }, 50);
+  }
+  document.querySelectorAll('.stab').forEach(t => {
+    var sel = t.getAttribute('data-p') === id;
+    t.classList.toggle('on', sel);
+    t.setAttribute('aria-selected', sel);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (id === 'studio') setTimeout(animSkills, 300);
+}
+
+/* ══════════════════════════════════
+   THEME
+══════════════════════════════════ */
+function setTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  document.getElementById('btnL').classList.toggle('on', t === 'light');
+  document.getElementById('btnD').classList.toggle('on', t === 'dark');
+  try { localStorage.setItem('pmu-t', t); } catch(e) {}
+}
+try { var st = localStorage.getItem('pmu-t'); if (st) setTheme(st); } catch(e) {}
+
+/* ══════════════════════════════════
+   HAMBURGER
+══════════════════════════════════ */
+var hbg = document.getElementById('hbg');
+var mdr = document.getElementById('mdr');
+hbg.addEventListener('click', function() {
+  var open = hbg.classList.toggle('on');
+  mdr.classList.toggle('on');
+  hbg.setAttribute('aria-expanded', open);
+});
+function closeMob() {
+  hbg.classList.remove('on');
+  mdr.classList.remove('on');
+  hbg.setAttribute('aria-expanded', false);
+}
+
+/* ══════════════════════════════════
+   SCROLL
+══════════════════════════════════ */
+var bkTop = document.getElementById('bkTop');
+window.addEventListener('scroll', function() {
+  document.getElementById('mainNav').classList.toggle('sd', window.scrollY > 20);
+  bkTop.classList.toggle('on', window.scrollY > 400);
+}, { passive: true });
+bkTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ══════════════════════════════════
+   SCROLL REVEAL (Intersection Observer)
+══════════════════════════════════ */
+var revObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* ══════════════════════════════════
+   SKILL BARS
+══════════════════════════════════ */
+function animSkills() {
+  var el = document.getElementById('abSkills');
+  if (!el) return;
+  el.querySelectorAll('.sk-fill').forEach(function(b) {
+    b.style.width = '0';
+    var w = b.getAttribute('data-w');
+    requestAnimationFrame(() => setTimeout(() => { b.style.width = w; }, 80));
+  });
+}
+
+/* ══════════════════════════════════
+   FORM
+══════════════════════════════════ */
+document.getElementById('ctForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var btn  = this.querySelector('.fbtn');
+  var txt  = document.getElementById('fbtnTxt');
+  var ok   = document.getElementById('fok');
+  txt.textContent = 'Invio in corso…';
+  btn.disabled = true;
+  // Simulate API call
+  await new Promise(r => setTimeout(r, 1200));
+  btn.style.display = 'none';
+  ok.style.display  = 'block';
+  this.reset();
+});
+
+/* ══════════════════════════════════
+   CLOSE DRAWER ON OUTSIDE CLICK
+══════════════════════════════════ */
+document.addEventListener('click', function(e) {
+  if (!hbg.contains(e.target) && !mdr.contains(e.target) && mdr.classList.contains('on')) {
+    closeMob();
+  }
+});
+</script>
+</body>
+</html>
